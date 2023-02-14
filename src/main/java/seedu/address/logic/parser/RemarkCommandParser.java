@@ -11,8 +11,14 @@ import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Remark;
 
 
-
+/** Represents a parser that processes a Remark command. */
 public class RemarkCommandParser implements Parser {
+    /**
+     * Parses the raw remark command input.
+     * @param args The raw input.
+     * @return a {@code Remark} command encapsulating the index and the remark string.
+     * @throws ParseException if the index is invalid.
+     */
     public RemarkCommand parse(String args) throws ParseException {
         requireNonNull(args);
         ArgumentMultimap argumentMultimap = ArgumentTokenizer.tokenize(args, PREFIX_REMARK);
