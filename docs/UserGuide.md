@@ -130,7 +130,7 @@ Edits an internship entry from the list of existing entries.
 
 Format: `edit INDEX [n/COMPANY_NAME] [r/ROLE] [s/STATUS ] [d/DATE]`
 
-* The internship entry whose entry number is `INDEX` would be updated. `INDEX` needs to be a valid entry number as specified in the internship list displayed using the`list` command. 
+* The internship entry whose entry number is `INDEX` would be updated. `INDEX` needs to be a valid entry number as specified in the internship list displayed using the`list` command.
 * At least one of the optional fields must be provided.
 * `STATUS` must have one of the following values: `new`, `applied`, `assessment`, `interview`, `offered` or `rejected`.
 

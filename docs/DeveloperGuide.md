@@ -340,7 +340,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
   * 1a1. InternBuddy requests for internship entry with correct format.
   * 1a2. User enters corrected internship entry.
   * Steps 1a1-1a2 are repeated until the internship entry entered is of the correct format.
- 
     Use case ends.
 
 * 1b.  InternBuddy detects one or more fields have invalid parameters.
