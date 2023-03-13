@@ -83,6 +83,10 @@ shadowJar {
     archiveFileName = 'addressbook.jar'
 }
 
+run {
+    enableAssertions = true
+}
+
 //@@author eugenetangkj-reused
 //Reused from https://github.com/se-edu/addressbook-level4/blob/master/build.gradle
 
