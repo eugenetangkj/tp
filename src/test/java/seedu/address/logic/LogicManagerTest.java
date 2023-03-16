@@ -146,6 +146,17 @@ public class LogicManagerTest {
         assertEquals(expectedModel, model);
     }
 
+
+    @Test
+    public void assertReadOnlyInternBuddySuccess() {
+        assertEquals(logic.getInternBuddy(), model.getInternBuddy());
+    }
+
+    @Test
+    public void assertGetInternBuddyFilePathSuccess() {
+        assertEquals(logic.getInternBuddyFilePath(), model.getInternBuddyFilePath());
+    }
+
     /**
      * A stub class to throw an {@code IOException} when the save method is called.
      */
