@@ -738,6 +738,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from Step 1.
 
+
 **Use Case: Get internship entries with upcoming events or deadlines**
 
 **MSS**
@@ -753,7 +754,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 
 1.  User deletes internship entries based on the parameters given.
-2.  InternBuddy displays a success message that indicates how many internships were found.
+2.  InternBuddy displays a success message that indicates how many internships were deleted.
 
     Use case ends.
 
@@ -769,37 +770,44 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from Step 1.
 
+* 2a. InternBuddy detects that the internship whose details are currently displayed in the right UI
+      panel has been deleted by this `delete` command.
+    * 2a1. InternBuddy resets the right UI panel to display the introductory message.
+        
+      Use case resumes from Step 2.
 
 
+**Use Case: Clear all internship entries**
 
-**Extensions**
+**MSS**
 
-* 1a. InternBuddy detects that no parameter is given.
-    * 1a1. InternBuddy prompts the user for a `find` command of the correct format.
+1.  User requests to clear all internship entries stored in InternBuddy.
+2.  InternBuddy deletes all internship entries. It resets the right UI panel to display the introductory
+    message and shows a success message. 
 
-      Use case resumes from Step 1.
-
-* 1b. InternBuddy detects that one or more parameters given are invalid.
-    * 1b1. InternBuddy prompts the user for a `find` command of the correct format.
-
-      Use case resumes from Step 1.
-    
+    Use case ends.
 
 
+**Use Case: Get Help**
 
+**MSS**
 
+1.  User requests for help in using InternBuddy.
+2.  InternBuddy opens up a new window that displays the list of commands supported by InternBuddy and provides
+    the link to InternBuddy's user guide.
 
-    
+    Use case ends.
+
 **Use case: Exit InternBuddy**
 
 **MSS**
 
-1.  User requests to exit InternBuddy
-2.  InternBuddy displays exit message and closes the application
+1.  User requests to exit InternBuddy.
+2.  InternBuddy closes.
 
     Use case ends.
 
-*{More to be added}*
+
 
 ### Non-Functional Requirements
 
