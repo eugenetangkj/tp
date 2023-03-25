@@ -160,24 +160,29 @@ Do refer to [Features](#features) below for a comprehensive list of supported fe
   e.g. If the command format is `help`, typing in `help 123` will cause your input to be interpreted as `help`.
 
 
-### Descriptions and Prefixes for Parameters
+### Descriptions, Prefixes and Constraints for Parameters
 In InternBuddy's commands, we refer to a range of parameters that you can replace with values to input information that
-is customised to  your internship applications. Also, parameters are prefixed such that you can refer to specific
-parameters using their prefixes without having to type in the full parameter names.
+is customised to your internship applications.
 
-The following table provides a summary of the parameters with their descriptions and prefixes.
-
-| Parameter      | Description                                              | Prefix |
-|----------------|----------------------------------------------------------|--------|
-| `COMPANY_NAME` | The name of the company                                  | `n/`   |
-| `ROLE`         | The role that you applied for                            | `r/`   |
-| `STATUS`       | The status of the internship application                 | `s/`   |
-| `DATE`         | The date associated with the internship application      | `d/`   |
-| `COMMENT`      | A comment that you can make on an internship application | `c/`   |
-| `TAG`          | A label that you can give to an internship application   | `t/`   |
+There are 2 important things that you should note:
+1. Most parameters have associated **prefixes**. Prefixes are convenient shorthands that allow you to easily identify
+   which parameter does a value belong to.
+2. There are **constraints** to the values that you can replace parameters with. The constraints differ based on
+   the parameters. If you do not adhere to these constraints in your input, an error message will be shown
+   in the Results Display when you type a command and press <button>Enter</button>.
 
 
+The following table provides a summary of the parameters with their descriptions, prefixes and constraints.
 
+| Parameter      | Description                                                                    | Prefix | Constraints                                                                                                                                             |
+|----------------|--------------------------------------------------------------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `COMPANY_NAME` | The name of the company                                                        | `n/`   | Alphanumeric with spaces allowed                                                                                                                        |
+| `ROLE`         | The role that you applied for                                                  | `r/`   | Alphanumeric with spaces allowed                                                                                                                        |
+| `STATUS`       | The status of the internship application                                       | `s/`   | Must be one of the following: `New`, `Applied`, `Assessment`, `Interview`, `Offered`, `Accepted`, `Rejected`. Note that this is **not** case-sensitive. |
+| `DATE`         | The date associated with the internship application                            | `d/`   | Must be a valid date in the format `YYYY-MM-DD `                                                                                                        |
+| `COMMENT`      | A comment that you can make on an internship application                       | `c/`   | Cannot be blank                                                                                                                                         |
+| `TAG`          | A label that you can give to an internship application                         | `t/`   | Cannot be blank and must be at most 30 characters.                                                                                                      |
+| `INDEX`        | The index number of the internship entry as displayed in the List Panel        | -      | A positive integer that is smaller than or equal to the largest index number shown in the List Panel. Note that 0 is not a positive integer.            |
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -185,35 +190,6 @@ The following table provides a summary of the parameters with their descriptions
 
 
 ## Features
-
-<div markdown="block" class="alert alert-info">
-
-**:information_source: Notes about the command format:**<br>
-
-* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
-  e.g. in `add n/COMPANY_NAME`, `COMPANY_NAME` is a parameter which can be used as `add n/Apple`.
-
-* Items in square brackets are optional.<br>
-  e.g. `edit INDEX [n/NAME]` can be used as `edit 2 n/CompanyXYZ` or as `edit 2`.
-
-* Items with `…`​ after them can be used multiple times including zero times.<br>
-  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
-
-* Parameters can be in any order.<br>
-  e.g. if the command specifies `n/Apple r/Software Engineer`, `r/Software Engineer n/Apple` is also acceptable.
-
-* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
-  the parameter will be taken.<br>
-  e.g. if you specify `r/Front-end Developer r/Back-end Developer`, only `r/Back-end Developer` will be taken.
-
-* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, and `exit`) will be
-  ignored.<br>
-  e.g. if the command specifies `help 123`, it will be interpreted as `help`.
-
-* For any parameters that refer to a date (such as in `add`, `edit`), they must be specified in the format YYYY-MM-DD<br>
-  e.g. if the command specifies `edit INDEX [d/DATE]`, then 1 March 2023 should be entered as `2023-03-01` for the
-  parameter `DATE`.
-</div>
 
 ### Listing all internship entries : `list`
 
