@@ -811,15 +811,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 ### Non-Functional Requirements
 
-1.  Should work on any _mainstream OS_ as long as it has Java `11` or above installed.
-2.  Should be able to hold up to 500 internship entries without a noticeable sluggishness in performance for typical usage.
-3.  Should be able to respond to user input within 6 seconds.
-3.  A Computing undergraduate student with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4.  Should be easily adopted by most Computing undergraduates students who have never used command line applications to track internships before.
-5.  The user guide should be clear enough such that most Computing undergraduates know how to use the core features of InternBuddy after reading the the user guide.
-6.  The developer guide should be clear enough such that new developers are able to understand how the system is designed, and know how to contribute to the codebase after reading the guide.
-7.  InternBuddy is not required to handle concurrent users.
-8.  InternBuddy is not required to make data available online.
+1. InternBuddy should work on any _mainstream OS_ as long as it has Java `11` or above installed.
+2. InternBuddy should be able to hold up to 500 internship entries without a noticeable sluggishness in performance for typical usage.
+3. InternBuddy Should be able to respond to user input within 6 seconds.
+4. A Computing undergraduate with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+5. Computing undergraduates who have never used command line applications to track internships before should be able to easily pick up InternBuddy.
+6. InternBuddy is not required to handle concurrent users.
+7. InternBuddy is not required to make data available online.
 
 ### Glossary
 
