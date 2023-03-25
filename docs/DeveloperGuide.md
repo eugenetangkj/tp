@@ -853,8 +853,7 @@ InternBuddy's sample data. Each test case is independent of the other test cases
     1. Download the [InternBuddy jar file](https://github.com/AY2223S2-CS2103T-T14-3/tp/releases/tag/v1.3.1) and copy into an empty folder.
 
     2. Double-click the jar file.
-    <br/>
-    <br/>
+   
     **Expected**: Shows the GUI with a set of sample internships. The window size may not be optimum.
 
 
@@ -863,26 +862,23 @@ InternBuddy's sample data. Each test case is independent of the other test cases
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
     2. Re-launch the app by double-clicking the jar file.<br>
-    <br/>
+
     **Expected**: The most recent window size and location is retained.
 
 ### List All Internships
 
 1. `list`
-<br/>
-<br/>
-**Expected**: All internship entries are listed out and displayed in the left UI panel.
+
+   **Expected**: All internship entries are listed out and displayed in the left UI panel.
 
 
 2. `list hello`
-   <br/>
-   <br/>
-**Expected**: All internship entries are listed out and displayed in the left UI panel.
+
+   **Expected**: All internship entries are listed out and displayed in the left UI panel.
 
 
 3. `list edit 1 n/Apples`
-   <br/>
-   <br/>
+
    **Expected**: All internship entries are listed out and displayed in the left UI panel.
 
 
@@ -890,8 +886,7 @@ InternBuddy's sample data. Each test case is independent of the other test cases
 ### Add an Internship
 
 1. `add n/Visa r/Software Engineer s/New d/2023-03-01 c/Considering to apply t/Payment`
-  <br/>
-  <br/>
+
    **Expected**: A new internship entry is successfully added. The new internship entry will have company name
    `Visa`, role `Software Engineer`, status `New`, deadline of application `2023-03-01`, comment `Considering to apply`,
    and tag `Payment`. The right UI panel displays the information for this new internship entry, and a success
@@ -899,53 +894,46 @@ InternBuddy's sample data. Each test case is independent of the other test cases
 
 
 2. `add n/Mastercard r/Software Engineer s/New d/2023-03-01`
-<br/>
-<br/>
-**Expected**: A new internship entry is successfully added. The new internship entry will have company name
+
+   **Expected**: A new internship entry is successfully added. The new internship entry will have company name
 `Mastercard`, role `Software Engineer`, status `New` and deadline of application `2023-03-01`. The right
 UI panel displays the information for this new internship entry, where the comment is shown as `NA`. A success message
 is displayed in the Results Display.
 
 
 3. `add n/Visa s/New d/2023-03-01`
-  <br/>
-  <br/>
-  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+
+   **Expected**: No new internship is added. An error message is displayed in the Results Display.
   This is because the compulsory parameter for role is missing.
 
 
 4. `add n/Vis@ r/Software Engineer s/New d/2023-03-01`
-  <br/>
-  <br/>
-  **Expected**: No new internship is added. An error message  is displayed in the Results Display.
+
+   **Expected**: No new internship is added. An error message  is displayed in the Results Display.
   This is because the parameter for `COMPANY_NAME` must be alphanumeric.
 
 
 5. `add n/Visa r/Software Engineer s/Applying d/2023-03-01`
-  <br/>
-  <br/>
-  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+
+   **Expected**: No new internship is added. An error message is displayed in the Results Display.
   This is because `Applying` is not a valid value for the `STATUS` parameter.
 
 
 6. `add n/Visa r/Software Engineer s/Applied d/1st March 2023`
-  <br/>
-  <br/>
-  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  
+   **Expected**: No new internship is added. An error message is displayed in the Results Display.
   This is because the parameter for `DATE` must be in the format of `YYYY-MM-DD`.
 
 
 7. `add n/Visa r/Software Engineer s/Applied d/2023-02-32`
-  <br/>
-  <br/>
-  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  
+    **Expected**: No new internship is added. An error message is displayed in the Results Display.
   This is because `2023-02-32` is not a valid date (i.e. March does not have 32 days).
 
 
 8. `add n/Visa r/Software Engineer s/Applied d/2023-02-15 c/`
-  <br/>
-  <br/>
-  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+
+     **Expected**: No new internship is added. An error message is displayed in the Results Display.
   This is because the `COMMENT` parameter cannot be left blank.
 
 
@@ -953,80 +941,206 @@ is displayed in the Results Display.
 ### Edit an Internship
 
 1. `edit 2 n/Amazon Technologies`
-   <br/>
-   <br/>
+
    **Expected**: The company name of the second internship entry is updated to `Amazon Technologies`.
    The right UI panel displays the updated details of the second internship entry.
 
 
 2. `edit 2 n/Amazon Technologies s/Applied`
-    <br/>
-    <br/>
+
    **Expected**: The company name and status of the second internship entry are updated to
    `Amazon Technologies` and `Applied` respectively. The right UI panel displays the updated details
    of the second internship entry.
 
 
 3. `edit 2 t/front-end`
-   <br/>
-   <br/>
+
    **Expected**: All previous tags for the second internship entry are removed, and a new tag
    `front-end` is added. The right UI panel displays the updated details fo the second internship
    entry.
 
 
 4. `edit 2 c/`
-   <br/>
-   <br/>
+
    **Expected**: The comment of the second internship entry is updated to `NA`. The right UI panel
    displays the updated details of the second internship entry.
 
 
-5. `edit 2 n/Amazon Technologies s/Applying`
-   <br/>
-   <br/>
+5. Successful editing through the filtered internship list
+    1. `find n/Apple n/Google`
+    2.  `edit 2 n/Google Technologies`
+
+   **Expected**: The company name of the internship entry whose original company name is `Google` is updated
+   to become `Google Technologies`. The right UI panel displays the updated details for this internship entry.
+
+
+6. Unsuccessful editing through the filtered internship list
+   1. `find n/Apple n/Google`
+   2.  `edit 3 n/Google Technologies`
+
+   **Expected**: An error message is displayed in the Results Display. This is because in the filtered
+   internship list, there are only 2 internship entries, implying that`3` is not a valid value for the
+   `INDEX` parameter.
+
+
+7. `edit 2 n/Amazon Technologies s/Applying`
+
    **Expected**: The second internship entry is not edited. An error message is displayed in the right
    UI panel. This is because while `Amazon Technologies` is a valid company name, `Applying` is an invalid
    status.
 
 
-6. `edit`
-   <br/>
-   <br/>
-   **Expected**: An error message is displayed in the right UI panel. This is because a minimum of 1
+8. `edit`
+
+   **Expected**: An error message is displayed in the Results Display. This is because a minimum of 1
    optional parameter must be specified.
 
 
-7. `edit -2 n/Amazon Technologies`
-   <br/>
-   <br/>
-   **Expected**: An error message is displayed in the right UI panel. This is because the `INDEX`
+9. `edit -2 n/Amazon Technologies`
+
+   **Expected**: An error message is displayed in the Results Display. This is because the `INDEX`
    parameter must be a positive integer greater than or equal to 1.
 
 
-8. `edit 12 n/Amazon Technologies`
-   <br/>
-   <br/>
-   **Expected**: An error message is displayed in the right UI panel. This is because there are only
+10. `edit 12 n/Amazon Technologies`
+
+    **Expected**: An error message is displayed in the Results Display. This is because there are only
    7 internship entries in the sample data. Index 12 is out of range.
+
+
+### View an Internship
+
+1. `view 2`
+
+   **Expected**: The right UI panel displays the details for the second internship entry.
+
+
+2. Successful viewing through the filtered internship list
+    1. `find n/Apple n/Google`
+    2. `view 2`
+
+   **Expected**: The right UI panel displays the details for the second internship entry in the
+   filtered internship list. In this case, it displays the details for the entry whose company
+   name is `Google`.
+
+
+3. Unsuccessful viewing through the filtered internship list
+    1. `find n/Apple n/Google`
+    2.  `view 3`
+
+   **Expected**: An error message is displayed in the Results Display. This is because in the filtered
+   internship list, there are only 2 internship entries, implying that`3` is not a valid value for the
+   `INDEX` parameter.
+
+
+
+2. `view -1`
    
+   **Expected**: An error message is displayed in the Results Display. This is because the `INDEX`
+   parameter must be a positive integer greater than or equal to 1.
+
+
+3. `view 1 2`
    
-### Deleting a person
+   **Expected**: An error message is displayed in the Results Display. This is because the `view`
+   command does not support viewing of more than 1 internship entry simultaneously.
 
-1. Deleting a person while all persons are being shown
 
-    1. Prerequisites: List all persons using the `list` command. Multiple persons in the list.
+4. `view 12`
+   
+   **Expected**: An error message is displayed in the Results Display. This is because there are only
+   7 internship entries in the sample data. Index 12 is out of range.
 
-    1. Test case: `delete 1`<br>
-       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
 
-    1. Test case: `delete 0`<br>
-       Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.
+5. `view`
+   
+    **Expected**: An error message is displayed in the Results Display. This is because the compulsory
+   `INDEX` parameter is missing.
 
-    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
-       Expected: Similar to previous.
 
-1. _{ more test cases …​ }_
+### Find Internship Entries
+
+1. `find n/Amazon`
+
+   **Expected**: The left UI panel shows the internship entry whose company name exactly matches with
+   `Amazon`. A success message is displayed in the Results Display.
+
+
+2. `find n/Amazon n/Google`
+   
+   **Expected**: The left UI panel shows the internship entries whose company name exactly matches with
+    `Amazon` or `Google`. A success message is displayed in the Results Display.
+
+
+3. Finding through the filtered internship list
+    1. `find n/Apple n/Google`
+    2. `find n/Amazon`
+
+   **Expected**: The left UI panel shows the internship entry whose company name exactly matches with
+   `Amazon`. This means that for the `find` command, the search is always done in the unfiltered list
+   even if the left UI panel was showing a filtered list.
+
+
+4. `find`
+
+   **Expected**: An error message is displayed in the Results Display. This is because a minimum of 1
+   optional parameter must be specified.
+
+
+5. `find s/Applied s/Interviewing`
+
+   **Expected**: An error message is displayed in the Results Display. This is because `Interviewing`
+   is not a valid value for the `STATUS` parameter.
+
+[To add more test cases for combination of parameters...]
+
+
+### Get internship entries with upcoming events or deadlines
+
+1. `upcoming`
+
+   **Expected**: All internship entries with events or deadlines in the upcoming week are 
+   listed out and displayed in the left UI panel.
+
+
+2. `upcoming hello`
+
+   **Expected**: All internship entries with events or deadlines in the upcoming week are
+   listed out and displayed in the left UI panel.
+
+
+3. `upcoming edit 1 n/Apples`
+
+   **Expected**: All internship entries with events or deadlines in the upcoming week are
+   listed out and displayed in the left UI panel.
+
+   
+### Delete Internships
+Prerequisites: List all internships using the `list` command. Multiple internships are present in the list.
+
+1. `delete 1`
+
+   **Expected**: The first internship entry in the left UI panel is deleted. If the right
+   UI panel was displaying the details of the deleted internship entry, it defaults to displaying
+   the welcome message instead.
+
+
+2. `delete 1 2`
+
+    **Expected**: The first and second internship entry in the left UI panel are deleted. If the right
+    UI panel was displaying the details of either deleted internship entries, it defaults to displaying
+    the welcome message instead.
+
+3. `delete s/New`
+
+   **Expected**: All internship entries
+
+
+
+
+
+
+
 
 ### Saving data
 
