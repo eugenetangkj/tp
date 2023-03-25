@@ -16,7 +16,7 @@ using Java 11, and is available on the Windows, macOS and Linux operating system
 
 <br/>
 <p align="center">
-  <img width="300" height="175" src="images/internbuddy-computer.png">
+  <img width="400" height="255" src="images/internbuddy-computer.png">
 </p>
 
 
@@ -61,8 +61,8 @@ information.
 carefully before committing
 </div>
 
-#### Code Blocks
-Important code-related text and file paths are indicated using syntax highlighting.
+#### Syntax Highlighting
+Commands, parameters, file paths and class names are highlighted.
 
 `command`, `PARAMETER`, `filepath.json`, `ClassName`
 
@@ -1259,17 +1259,17 @@ Prerequisites: List all internships using the `list` command. Multiple internshi
 ## **Glossary**
 
 
-| Term                           | Definition                                                                                                                                                                                                                                  |
-|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Alphanumeric                   | Any combination of letters and numbers                                                                                                                                                                                                      |
-| Command                        | An instruction for InternBuddy to perform an action.                                                                                                                                                                                        |
-| Command Line Interface (CLI)   | A CLI is the text-based interface that you can use to provide instructions to your computer. Examples of instructions include opening files and running programs.                                                                           |
-| Computing undergraduate        | A university undergraduate pursuing a Computing degree.                                                                                                                                                                                     |
-| Graphical User Interface (GUI) | A GUI is the visual interface that you see when an application launches, allowing you to interact with it by clicking on its various buttons and components.                                                                                |
-| Mainstream OS                  | Includes Windows, macOS, Linux and Unix.                                                                                                                                                                                                    |
-| Parameter                      | A part of the command where you have to supply a value for the command to be valid.                                                                                                                                                         |
-| Prefix                         | A short form for the name of a parameter. Parameters used in commands have to be preceded by prefixes with`/`. For example, for the parameter `CompanyName`, the usage would be `n/CompanyName`, where `n` is the prefix for `CompanyName`. |
-| Tech Stack                     | A set of technologies that an individual or company uses to create and/or maintain a software system or product.                                                                                                                            |
+| Term                           | Definition                                                                                                                                                                                                              |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Alphanumeric                   | Any combination of letters and numbers                                                                                                                                                                                  |
+| Command                        | An instruction for InternBuddy to perform an action.                                                                                                                                                                    |
+| Command Line Interface (CLI)   | A CLI is the text-based interface that you can use to provide instructions to your computer. Examples of instructions include opening files and running programs.                                                       |
+| Computing undergraduate        | A university undergraduate pursuing a Computing degree.                                                                                                                                                                 |
+| Graphical User Interface (GUI) | A GUI is the visual interface that you see when an application launches, allowing you to interact with it by clicking on its various buttons and components.                                                            |
+| Mainstream OS                  | Includes Windows, macOS, Linux and Unix.                                                                                                                                                                                |
+| Parameter                      | A part of the command where you have to supply a value for the command to be valid.                                                                                                                                     |
+| Prefix                         | A short form for the name of a parameter. It indicates which parameter does a value belongs to. For example, in `n/Apple`, the value `Apple` is supplied to the parameter `COMPANY_NAME` since the `n/` prefix is used. |
+| Tech Stack                     | A set of technologies that an individual or company uses to create and/or maintain a software system or product.                                                                                                        |
 
 
 --------------------------------------------------------------------------------------------------------------------

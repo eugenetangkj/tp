@@ -18,7 +18,7 @@ InternBuddy runs using Java 11, and is available on the Windows, macOS and Linux
 
 <br/>
 <p align="center">
-  <img width="300" height="175" src="images/internbuddy-computer.png">
+  <img width="400" height="255" src="images/internbuddy-computer.png">
 </p>
 
 
@@ -52,8 +52,8 @@ This uses guide uses a set of formatting standards and visuals to better communi
 carefully before committing
 </div>
 
-#### Code Blocks
-Important code-related text and file paths are indicated using syntax highlighting.
+#### Syntax Highlighting
+Commands, parameters, file paths and class names are highlighted.
 
 `command`, `PARAMETER`, `filepath.json`, `ClassName`
 
@@ -86,9 +86,10 @@ InternBuddy, and it is where your InternBuddy data file will be stored in.
 
 </div>
 
-4. Double-click on the file `internbuddy.jar` to launch InternBuddy. A GUI similar to the diagram below should
+4. Double-click on the file `internbuddy.jar` to launch InternBuddy. A GUI similar to Figure 1 should
    appear in a few seconds. Note how the app contains some sample data.<br/><br/>
    ![Ui](images/Ui.png)
+   <p style="text-align: center;">Figure 1: InternBuddy's GUI</p>
 
 <br/>
 
@@ -112,7 +113,7 @@ Do refer to [Features](#features) below for a comprehensive list of supported fe
 ## Exploring the Graphical User Interface
 
 ![Graphical User Interface](images/gui-markup.png)
-
+<p style="text-align: center;">Figure 2: Different parts of InternBuddy's GUI</p>
 <br/>
 
 | Part            | Usage                                                                                        |
@@ -122,6 +123,9 @@ Do refer to [Features](#features) below for a comprehensive list of supported fe
 | List Panel      | Displays a list of internship entries.                                                       |
 | View Panel      | Displays either the welcome message or detailed information of a specified internship entry. |
 | Location Bar    | States where your InternBuddy data file is located on your computer.                         |
+
+<p style="text-align: center;">Figure 3: Explanation of the different parts of InternBuddy's GUI</p>
+
 
 <div markdown="span" class="alert alert-success">
 
@@ -166,13 +170,14 @@ is customised to your internship applications.
 
 There are 2 important things that you should note:
 1. Most parameters have associated **prefixes**. Prefixes are convenient shorthands that allow you to easily identify
-   which parameter does a value belong to.
+   which parameter does a value belong to. For example, in `add n/Apple`, the value `Apple` is associated with the
+   parameter `COMPANY_NAME` since the `n/` prefix is used.
 2. There are **constraints** to the values that you can replace parameters with. The constraints differ based on
-   the parameters. If you do not adhere to these constraints in your input, an error message will be shown
-   in the Results Display when you type a command and press <button>Enter</button>.
+   the parameters. If you do not adhere to these constraints in your input, your input will be valid and an error
+   message will be shown in the Results Display when you type the input in and press <button>Enter</button>.
 
 
-The following table provides a summary of the parameters with their descriptions, prefixes and constraints.
+Figure 4 provides a summary of the parameters with their descriptions, prefixes and constraints.
 
 | Parameter      | Description                                                                    | Prefix | Constraints                                                                                                                                             |
 |----------------|--------------------------------------------------------------------------------|--------|---------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -183,6 +188,45 @@ The following table provides a summary of the parameters with their descriptions
 | `COMMENT`      | A comment that you can make on an internship application                       | `c/`   | Cannot be blank                                                                                                                                         |
 | `TAG`          | A label that you can give to an internship application                         | `t/`   | Cannot be blank and must be at most 30 characters.                                                                                                      |
 | `INDEX`        | The index number of the internship entry as displayed in the List Panel        | -      | A positive integer that is smaller than or equal to the largest index number shown in the List Panel. Note that 0 is not a positive integer.            |
+
+<p style="text-align: center;">Figure 5: Parameters with their descriptions, prefixes and constraints</p>
+
+### Details on **`STATUS`** and **`DATE`**
+The parameter `STATUS` is used to represent the current status of an internship application. It can only take on one
+of the following values: `New`, `Applied`, `Assessment`, `Interview`, `Offered`, `Accepted` and `Rejected`.
+Note that this is not case-sensitive. Figure 6 explains the meaning of each status.
+
+
+| `STATUS` | Description                                                                                                                       |
+|-------------------|-----------------------------------------------------------------------------------------------------------------------------------|
+| `New`             | You have recently saw this internship opportunity and would like to record it in InternBuddy. Also, you have yet to apply for it. |
+| `Applied`         | You have applied for this internship opportunity and you are currently waiting for the company's response.                        |
+| `Assessment`      | You are currently in the technical assessment stage of the application process.                                                   |
+| `Interview`       | You are currently in the behavioral interview stage of the application process.                                                   |
+| `Offered`         | You have been offered the internship opportunity.                                                                                 |
+| `Accepted`        | You have accepted the internship opportunity.                                                                                     |
+| `Rejected`        | You have either been rejected by the company, or that you have rejected the internshop offer.                                     |
+
+<p style="text-align: center;">Figure 6: Description of statuses</p>
+
+
+Depending on the status of the internship application, the `DATE` parameter will be interpreted differently. Figure 7
+documents the meaning of `DATE` with respect to each `STATUS` value.
+
+| `STATUS`     | Interpretation of `DATE`     |
+|--------------|------------------------------|
+| `New`        | Deadline of Application      |
+| `Applied`    | Date Applied                 |
+| `Assessment` | Date of Technical Assessment |
+| `Interview`  | Date of Behavioral Interview |
+| `Offered`    | Deadline of Offer Acceptance |
+| `Accepted`   | Date of Acceptance           |
+| `Rejected`   | Date of Rejection            |
+
+<p style="text-align: center;">Figure 7: Description of dates</p>
+
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
