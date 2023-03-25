@@ -131,6 +131,58 @@ Do refer to [Features](#features) below for a comprehensive list of supported fe
 
 
 --------------------------------------------------------------------------------------------------------------------
+## Command Information
+
+### Notes about Commands and Parameters
+
+* Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
+  e.g. If the command format is `add n/COMPANY_NAME`, you may input the command as `add n/Apple` where you supply the
+  value `Apple` to the parameter `COMPANY_NAME`.
+
+* Items in square brackets are optional.<br>
+  e.g. If the command format is `edit INDEX [n/NAME] [c/COMMENT]`, you may input the command as `edit 2 n/Apple` where
+  you omit the value for the parameter `COMMENT`.
+
+* Items with `…`​ after them can be used multiple times including zero times.<br>
+  e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
+
+* Parameters can be in any order.<br>
+  e.g. If the command format is `n/NAME r/ROLE`, both `n/Apple r/Software Engineer` and `r/Software Engineer n/Apple`
+  are acceptable.
+
+* If a parameter is expected only once in the command, but you specified it multiple times, only the last occurrence of
+  the parameter will be taken.<br>
+  e.g. If the command format is `r/ROLE`, typing in `r/Front-end Developer r/Back-end Developer` will cause your
+  input to be interpreted as `r/Back-end Developer`.
+
+* Extraneous parameters for commands that do not take in parameters (such as `help`, `list`, and `exit`) will be
+  ignored.<br>
+  e.g. If the command format is `help`, typing in `help 123` will cause your input to be interpreted as `help`.
+
+
+### Descriptions and Prefixes for Parameters
+In InternBuddy's commands, we refer to a range of parameters that you can replace with values to input information that
+is customised to  your internship applications. Also, parameters are prefixed such that you can refer to specific
+parameters using their prefixes without having to type in the full parameter names.
+
+The following table provides a summary of the parameters with their descriptions and prefixes.
+
+| Parameter      | Description                                              | Prefix |
+|----------------|----------------------------------------------------------|--------|
+| `COMPANY_NAME` | The name of the company                                  | `n/`   |
+| `ROLE`         | The role that you applied for                            | `r/`   |
+| `STATUS`       | The status of the internship application                 | `s/`   |
+| `DATE`         | The date associated with the internship application      | `d/`   |
+| `COMMENT`      | A comment that you can make on an internship application | `c/`   |
+| `TAG`          | A label that you can give to an internship application   | `t/`   |
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
 
 ## Features
 
