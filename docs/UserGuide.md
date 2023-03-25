@@ -1,14 +1,26 @@
 ---
 layout: page
-title: User Guide
+title: InternBuddy User Guide
 ---
-
-InternBuddy is a **desktop app for Computing undergraduate students to manage their internship applications**.
-It is **optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User
-Interface (GUI). If you can type fast, InternBuddy can efficiently track your internship applications.
-
 * Table of Contents
 {:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+## Introducing InternBuddy
+
+InternBuddy is a desktop application for Computing undergraduates to manage their internship applications.
+It is optimized for typing where it allows you to complete internship management tasks much more efficiently via
+the keyboard as compared to using traditional Graphical User Interface (GUI) applications. If you are a fast typist
+who is seeking for a one-stop platform to systematically organise your internship applications,
+then InternBuddy is the perfect buddy to accompany you during your internship hunt.
+
+InternBuddy runs using Java 11, and is available on the Windows, macOS and Linux operating systems.
+
+<br/>
+<p align="center">
+  <img width="300" height="175" src="images/internbuddy-computer.png">
+</p>
+
 
 --------------------------------------------------------------------------------------------------------------------
 

@@ -1,7 +1,14 @@
 ---
 layout: page
-title: Developer Guide
+title: InternBuddy Developer Guide
 ---
+## Table of Contents
+* Table of Contents
+{:toc}
+
+--------------------------------------------------------------------------------------------------------------------
+## Introducing InternBuddy
+
 InternBuddy is a desktop application for Computing undergraduates to manage their internship applications.
 It is optimized for typing where it allows users to complete internship management tasks much more efficiently
 via the keyboard as compared to using traditional Graphical User Interface (GUI) applications. InternBuddy runs
@@ -12,9 +19,7 @@ using Java 11, and is available on the Windows, macOS and Linux operating system
   <img width="300" height="175" src="images/internbuddy-computer.png">
 </p>
 
-## Table of Contents
-* Table of Contents
-  {:toc}
+
 
 --------------------------------------------------------------------------------------------------------------------
 ## About the Developer Guide
@@ -224,6 +229,12 @@ Classes used by multiple components are in the `seedu.address.commons` package.
 ## **Implementation**
 
 This section describes some noteworthy details on how certain features are implemented.
+<div markdown="span" class="alert alert-info">:information_source: **Note:** Due to a limitation of PlantUML, the lifeline
+for objects in sequence diagrams would always reach the end of the diagrams. However, it is worthy to note that for objects
+with destroy markers (X), their lifelines should have ended at the markers.
+
+</div>
+
 
 ### Add Feature
 
@@ -291,6 +302,45 @@ The following gives a more detailed explanation of the `add` operation.
       UI panel may not be visible since it is added to the bottom. Without scrolling, users
       have to rely on the Results Display box to determine if the `AddCommand` is successful.
 
+
+### Edit feature
+
+#### Implementation
+
+
+The following sequence diagram shows how the edit operation works:
+
+![EditSequenceDiagram](images/EditSequenceDiagram.png)
+
+
+
+The following is a more detailed explanation on how `EditCommand` works.
+
+1. When the user enters an `edit` command, the `EditCommandParser` parses the user's input.
+2. If the internship index specified is invalid, a `ParserException` will be thrown and the specified `Internship` will not be edited.
+3. If the name, role, status, tag, date or comment fields are missing (at least one must be present) or invalid, a `ParserException` will be thrown and the Internship will not be edited.
+4. After the successful parsing of user input into `EditCommandParser`, the `EditCommand` object is created with a new updated `Internship` object (to maintain immutability).
+5. Following which, `EditCommand#execute(Model model)` method is called which eventually calls the `Model#setInternship(Internship toEdit, Internship edited)` method, replacing the old `Internship` object with the newly updated one.
+
+#### Design considerations:
+
+**Aspect: How edit executes:**
+
+* **Alternative 1 (current choice):** Edit command will create a new `Internship` to replace the existing `Internship` object.
+    * Pros:
+        * Maintains immutability of `Internship` class
+    * Cons:
+        * May be less efficient than alternative 2
+
+* **Alternative 2:** Edit command will directly edit the `internship` by modifying its attributes
+    * Pros:
+        * Will use less memory (no new `internship` object will be created).
+        * Saves time since there is no need to create the new object.
+    * Cons:
+        * Reduces the defensiveness of the code and class
+
+
+
 ### View Feature
 
 #### Implementation
@@ -336,6 +386,102 @@ The following gives a more detailed explanation of the `view` operation.
       is an issue in processing user input for the `ViewCommand`, there is a need to
       identify and isolate which of the 2 checks does the problem originate from.
 
+### Find feature
+
+#### Implementation
+
+The following sequence diagram shows how the find operation works:
+
+![FindSequenceDiagram](images/FindSequenceDiagram.png)
+
+The following is a more detailed explanation on how 'FindCommand' works.
+
+1. If the name, role, status, date or tag fields are missing (at least one must be present) or invalid, a `ParserException` will be thrown and the `FindCommand` will not be executed.
+2. After the successful parsing of user input into `FindCommandParser`, an `InternshipContainsKeywordPredicate` object, containing the lists of keywords specified in the user input, is created, which in turn is used to create a `FindCommand` object.
+3. Following which, the `FindCommand#execute(Model model)` method is called which eventually calls the `updateFilteredInternshipList(Predicate<Internship> predicate)` method with the `InternshipContainsKeywordPredicate` object, previously created by `FindCommandParser`, as its argument and updates the `FilteredList<Internship>` stored inside the `Model`.
+
+### Design Considerations
+
+**Aspect: How find command uses user input:**
+
+* **Alternative 1 (current choice):** Find internship by exact match of user input and `Internship` object's corresponding attributes
+    * Pros:
+        * Instructions on how to use the find command will be clear and easily communicated to user
+    * Cons:
+        * Very restrictive for user (e.g. an internship with the name "Google Ltd" will not turn up for the find command "find n/Google")
+
+* **Alternative 2:** Find internship by match of user input and `Internship` object's attributes' corresponding attributes' substrings
+    * Pros:
+        * Command is much more flexible (e.g. an internship with the name "Google" will turn up for the find command "find n/goo")
+    * Cons:
+        * May be confusing for user (e.g. user assumes find command works for matching substrings of individual words and inputs "find n/goo inc" for an `Internship` object named "Google Incorporated")
+
+* **Alternative 3:** Find internship by match of any word of user input and any word of `Internship` object's corresponding attributes
+    * Pros:
+        * Command is much more flexible
+    * Cons:
+        * Command becomes too flexible (e.g. a find command like "find n/google ltd" will return `Internship` objects that not just has the word "Google", like "Google Ltd", in their names but "ltd" as well, like "Apple Ltd", "Meta Ltd" and more)
+
+
+    
+### Clear Feature
+
+#### Implementation
+The following sequence diagram provides an overview on how the `clear` operation works.
+
+![AddSequenceDiagram](images/ClearSequenceDiagram.png)
+
+The following gives a more detailed explanation of the `clear` operation.
+
+1. When the user enters a `clear` command, the  `ClearCommandParser` parses the user's input.
+2. It checks for if the following optional arguments exist:
+- `n/` followed by the company's name
+- `r/` followed by the role applied
+- `s/` followed by the status of the internship application
+- `t/` followed by tags for the entry
+
+Note that all arguments are optional. An `InternshipContainsKeywordPredicate` is created. If there are no arguments,  `InternshipContainsKeywordPredicate` will return `True` if its `isEmpty()` method is called. Otherwise, it will return `False`.
+
+Furthermore, the predicate tests if an internship matches all its conditions (cond1 AND cons2 AND...). There are 2 cases depending on whether the predicate is empty:
+
+#### Case 1: The predicate is empty
+1. A new `InterBuddy` object is created. This object contains all user data related to internship entires. It will replace the existing `InternBuddy` object in `ModelManager` using the method `ModelManager.setInternBuddy()`.
+
+#### Case 2: The predicate is not empy
+1. `ModelManager.deleteInternshipByPredicate(Predicate<Internship> predicate)` is called with the previously created `InternshipContainsKeywordPredicate` object as its argument. It will delelete all internships entries matching the predicate.
+
+
+### Design Considerations
+
+**Aspect: Whether to use an AND relationship or OR relationship for predicate matching**
+
+* **Alternative 1 (current choice):**  Use an AND relationship
+    * Pros:
+        * More user-centric as users will be able to have more fine-grained control over what internships they want to delete. For example, they may want to delete all internship entries related to a certain company and role.
+    * Cons:
+        * In order to delete internships based on an OR relationships, they need to call `clear` multiple times.
+
+* **Alternative 2:** Use an OR relationship
+    * Pros:
+        * The current `clear` command takes in no arguments.
+    * Cons:
+        * Less fine-grained control over `clear`.
+
+**Aspect: Whether to add this enhancement to `clear` or `delete` command**
+
+* **Alternative 1 (current choice):**  Enhance the `clear` command
+    * Pros:
+        * The current `clear` command takes in no arguments, so it is much easier to implement.
+    * Cons:
+        * May be confusing to the user, since there is no clear distinction between `delete` and `clear`.
+
+* **Alternative 2:** Enhance the `delete` command
+    * Pros:
+        * Combine all delete features into one keyword.
+    * Cons:
+        * We need to manage both indexes and keywords, and this may be a source of confusion. For example, in the command `delete 1 2 n/Google`, the command should delete internships with (index 1 OR 2) AND has the name `Google` in it. Maintaining both AND and OR relationships can be confusing for the user.
+
+    
 ### \[Proposed\] Undo/redo feature
 
 #### Proposed Implementation
@@ -416,147 +562,6 @@ The following activity diagram summarizes what happens when a user executes a ne
 
 _{more aspects and alternatives to be added}_
 
-### \[Proposed\] Data archiving
-
-_{Explain here how the data archiving feature will be implemented}_
-
-### Edit feature
-
-#### Implementation
-
-
-The following sequence diagram shows how the edit operation works:
-
-![EditSequenceDiagram](images/EditSequenceDiagram.png)
-
-<div markdown="span" class="alert alert-info">:information_source: **Note:** The lifeline for `EditCommandParser` should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-
-The following is a more detailed explanation on how `EditCommand` works.
-
-1. When the user enters an `edit` command, the `EditCommandParser` parses the user's input.
-2. If the internship index specified is invalid, a `ParserException` will be thrown and the specified `Internship` will not be edited.
-3. If the name, role, status, tag, date or comment fields are missing (at least one must be present) or invalid, a `ParserException` will be thrown and the Internship will not be edited.
-4. After the successful parsing of user input into `EditCommandParser`, the `EditCommand` object is created with a new updated `Internship` object (to maintain immutability).
-5. Following which, `EditCommand#execute(Model model)` method is called which eventually calls the `Model#setInternship(Internship toEdit, Internship edited)` method, replacing the old `Internship` object with the newly updated one.
-
-#### Design considerations:
-
-**Aspect: How edit executes:**
-
-* **Alternative 1 (current choice):** Edit command will create a new `Internship` to replace the existing `Internship` object.
-    * Pros: 
-      * Maintains immutability of `Internship` class
-    * Cons: 
-      * May be less efficient than alternative 2
-
-* **Alternative 2:** Edit command will directly edit the `internship` by modifying its attributes
-    * Pros: 
-      * Will use less memory (no new `internship` object will be created). 
-      * Saves time since there is no need to create the new object.
-    * Cons: 
-      * Reduces the defensiveness of the code and class
-
-
-_{more aspects and alternatives to be added}_
-
-### Find feature
-
-#### Implementation
-
-The following sequence diagram shows how the find operation works:
-
-![FindSequenceDiagram](images/FindSequenceDiagram.png)
-
-The following is a more detailed explanation on how 'FindCommand' works.
-
-1. If the name, role, status, date or tag fields are missing (at least one must be present) or invalid, a `ParserException` will be thrown and the `FindCommand` will not be executed.
-2. After the successful parsing of user input into `FindCommandParser`, an `InternshipContainsKeywordPredicate` object, containing the lists of keywords specified in the user input, is created, which in turn is used to create a `FindCommand` object.
-3. Following which, the `FindCommand#execute(Model model)` method is called which eventually calls the `updateFilteredInternshipList(Predicate<Internship> predicate)` method with the `InternshipContainsKeywordPredicate` object, previously created by `FindCommandParser`, as its argument and updates the `FilteredList<Internship>` stored inside the `Model`.
-
-### Design Considerations
-
-**Aspect: How find command uses user input:**
-
-* **Alternative 1 (current choice):** Find internship by exact match of user input and `Internship` object's corresponding attributes
-    * Pros:
-        * Instructions on how to use the find command will be clear and easily communicated to user
-    * Cons:
-        * Very restrictive for user (e.g. an internship with the name "Google Ltd" will not turn up for the find command "find n/Google")
-
-* **Alternative 2:** Find internship by match of user input and `Internship` object's attributes' corresponding attributes' substrings
-    * Pros:
-        * Command is much more flexible (e.g. an internship with the name "Google" will turn up for the find command "find n/goo")
-    * Cons:
-        * May be confusing for user (e.g. user assumes find command works for matching substrings of individual words and inputs "find n/goo inc" for an `Internship` object named "Google Incorporated")
-
-* **Alternative 3:** Find internship by match of any word of user input and any word of `Internship` object's corresponding attributes
-    * Pros:
-        * Command is much more flexible
-    * Cons:
-        * Command becomes too flexible (e.g. a find command like "find n/google ltd" will return `Internship` objects that not just has the word "Google", like "Google Ltd", in their names but "ltd" as well, like "Apple Ltd", "Meta Ltd" and more)
-
-### Clear Feature
-
-#### Implementation
-The following sequence diagram provides an overview on how the `clear` operation works.
-
-![AddSequenceDiagram](images/ClearSequenceDiagram.png)
-
-The following gives a more detailed explanation of the `clear` operation.
-
-1. When the user enters a `clear` command, the  `ClearCommandParser` parses the user's input.
-2. It checks for if the following optional arguments exist:
-  - `n/` followed by the company's name
-  - `r/` followed by the role applied
-  - `s/` followed by the status of the internship application
-  - `t/` followed by tags for the entry
-
-Note that all arguments are optional. An `InternshipContainsKeywordPredicate` is created. If there are no arguments,  `InternshipContainsKeywordPredicate` will return `True` if its `isEmpty()` method is called. Otherwise, it will return `False`. 
-
-Furthermore, the predicate tests if an internship matches all its conditions (cond1 AND cons2 AND...). There are 2 cases depending on whether the predicate is empty:
-
-#### Case 1: The predicate is empty
-1. A new `InterBuddy` object is created. This object contains all user data related to internship entires. It will replace the existing `InternBuddy` object in `ModelManager` using the method `ModelManager.setInternBuddy()`.
-
-#### Case 2: The predicate is not empy
-1. `ModelManager.deleteInternshipByPredicate(Predicate<Internship> predicate)` is called with the previously created `InternshipContainsKeywordPredicate` object as its argument. It will delelete all internships entries matching the predicate.
-
-
-### Design Considerations
-
-**Aspect: Whether to use an AND relationship or OR relationship for predicate matching**
-
-* **Alternative 1 (current choice):**  Use an AND relationship
-    * Pros:
-        * More user-centric as users will be able to have more fine-grained control over what internships they want to delete. For example, they may want to delete all internship entries related to a certain company and role.
-    * Cons:
-        * In order to delete internships based on an OR relationships, they need to call `clear` multiple times.
-
-* **Alternative 2:** Use an OR relationship
-    * Pros:
-        * The current `clear` command takes in no arguments.
-    * Cons:
-        * Less fine-grained control over `clear`.
-
-**Aspect: Whether to add this enhancement to `clear` or `delete` command**
-
-* **Alternative 1 (current choice):**  Enhance the `clear` command
-    * Pros:
-        * The current `clear` command takes in no arguments, so it is much easier to implement.
-    * Cons:
-        * May be confusing to the user, since there is no clear distinction between `delete` and `clear`.
-
-* **Alternative 2:** Enhance the `delete` command
-    * Pros:
-        * Combine all delete features into one keyword.
-    * Cons:
-        * We need to manage boths indexes and keywords, and this may be a source of confusion. For example, in the command `delete 1 2 n/Google`, the command should delete internships with (index 1 OR 2) AND has the name `Google` in it. Maintaining both AND and OR relationships can be confusing for the user.
-
-
-_{more aspects and alternatives to be added}_
 
 --------------------------------------------------------------------------------------------------------------------
 
