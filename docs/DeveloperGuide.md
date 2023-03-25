@@ -841,8 +841,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 Given below are instructions and test cases to test InternBuddy manually.
 
 <div markdown="span" class="alert alert-primary">:information_source: **Note:** These instructions only provide a starting point for testers to work on.
-Testers are expected to do more *exploratory* testing. Also, the test cases are based on the assumption that you are working with
-InternBuddy's sample data. Each test case is independent of the other test cases.
+Testers are expected to do more *exploratory* testing. Also, each test case is independent of the other test cases.
 
 </div>
 
@@ -939,6 +938,8 @@ is displayed in the Results Display.
 
 
 ### Edit an Internship
+Assumptions: The sample data provided by InternBuddy is used, where there is a total of 7 internship entries.
+
 
 1. `edit 2 n/Amazon Technologies`
 
@@ -1009,13 +1010,14 @@ is displayed in the Results Display.
 
 
 ### View an Internship
-
+Assumptions: The sample data provided by InternBuddy is used, where there is a total of 7 internship entries.
 1. `view 2`
 
    **Expected**: The right UI panel displays the details for the second internship entry.
 
 
 2. Successful viewing through the filtered internship list
+
     1. `find n/Apple n/Google`
     2. `view 2`
 
@@ -1122,33 +1124,110 @@ Prerequisites: List all internships using the `list` command. Multiple internshi
 
    **Expected**: The first internship entry in the left UI panel is deleted. If the right
    UI panel was displaying the details of the deleted internship entry, it defaults to displaying
-   the welcome message instead.
+   the welcome message.
 
 
 2. `delete 1 2`
 
     **Expected**: The first and second internship entry in the left UI panel are deleted. If the right
     UI panel was displaying the details of either deleted internship entries, it defaults to displaying
-    the welcome message instead.
+    the welcome message.
+
 
 3. `delete s/New`
 
-   **Expected**: All internship entries
+   **Expected**: All internship entries with the status `New` are deleted. If the right UI panel was
+   displaying the details of one of these deleted internship entries, it defaults to displaying the
+   welcome message.
+
+4. `delete`
+
+  **Expected**: An error message is displayed in the Results Display. This is because a minimum of 1
+  optional parameter must be specified.
 
 
+[To add more test cases for mixing of parameters and for filtered internship list ]
 
 
+### Clear All Internships
+
+1. `clear`
+
+   **Expected**: All internship entries are deleted. The right UI panel displays the welcome message.
 
 
+2. `clear hello`
+
+   **Expected**: All internship entries are deleted. The right UI panel displays the welcome message.
+
+
+3. `clear edit 1 n/Apples`
+
+   **Expected**: All internship entries are deleted. The right UI panel displays the welcome message.
+
+
+### Get Help
+
+1. `help`
+
+   **Expected**: The help window opens.
+
+
+2. `help hello`
+
+   **Expected**: The help window opens.
+
+
+3. `help edit 1 n/Apples`
+
+   **Expected**: The help window opens.
+
+### Exit InternBuddy
+
+1. `exit`
+
+   **Expected**: InternBuddy closes.
+
+
+2. `exit hello`
+
+   **Expected**: InternBuddy closes.
+
+
+3. `exit edit 1 n/Apples`
+
+   **Expected**: InternBuddy closes.
 
 
 ### Saving data
 
-1. Dealing with missing/corrupted data files
+1. Missing Data File
+   
+   Prerequisite: There is no file called `internbuddy.json` in the folder where InternBuddy is located.
 
-    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1. If you have an existing `internbuddy.json` file, delete the file.
+   2. Double-click InternBuddy's jar file.
+   
+   **Expected**: InternBuddy launches with the sample internship data shown in the left UI panel. There
+   is a total of 7 internship entries.
 
-1. _{ more test cases …​ }_
+
+2. Corrupted Data File
+
+    Prerequisite: There is a file called `internbuddy.json` in the folder where InternBuddy is located.
+    You should have made some changes to the data (e.g. editing the company name of an entry via the `edit`
+    command or add a new internship entry) such the data differs from the sample data.
+
+   1. Ensure that InternBuddy is not running. If it is running, close it.
+   2. Open the file `internbuddy.json`. If prompted to select an application to open it, choose `Notepad`
+      (Windows)/[Insert for Mac]/[Insert for Linux].
+   3. In `internbuddy.json`, locate any line that contains the word `CompanyName`.
+   4. Highlight the line located in Step 4 and delete the entire line.
+   5. Save the `internbuddy.json` file and close it.
+   6. Launch InternBuddy.
+
+    **Expected**: Your previous changes to the sample data are no longer present. InternBuddy launches
+   with the sample internship data shown in the left UI panel. There is a total of 7 internship entries.
 
 
 
