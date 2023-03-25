@@ -836,32 +836,181 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Instructions for manual testing**
+## **Appendix B: Instructions for manual testing**
 
-Given below are instructions to test the app manually.
+Given below are instructions and test cases to test InternBuddy manually.
 
-<div markdown="span" class="alert alert-info">:information_source: **Note:** These instructions only provide a starting point for testers to work on;
-testers are expected to do more *exploratory* testing.
+<div markdown="span" class="alert alert-primary">:information_source: **Note:** These instructions only provide a starting point for testers to work on.
+Testers are expected to do more *exploratory* testing. Also, the test cases are based on the assumption that you are working with
+InternBuddy's sample data. Each test case is independent of the other test cases.
 
 </div>
 
-### Launch and shutdown
+### Launch and Shutdown
 
-1. Initial launch
+1. **Initial launch**
 
-    1. Download the jar file and copy into an empty folder
+    1. Download the [InternBuddy jar file](https://github.com/AY2223S2-CS2103T-T14-3/tp/releases/tag/v1.3.1) and copy into an empty folder.
 
-    1. Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.
+    2. Double-click the jar file.
+    <br/>
+    <br/>
+    **Expected**: Shows the GUI with a set of sample internships. The window size may not be optimum.
 
-1. Saving window preferences
+
+2. **Saving window preferences**
 
     1. Resize the window to an optimum size. Move the window to a different location. Close the window.
 
-    1. Re-launch the app by double-clicking the jar file.<br>
-       Expected: The most recent window size and location is retained.
+    2. Re-launch the app by double-clicking the jar file.<br>
+    <br/>
+    **Expected**: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
+### List All Internships
 
+1. `list`
+<br/>
+<br/>
+**Expected**: All internship entries are listed out and displayed in the left UI panel.
+
+
+2. `list hello`
+   <br/>
+   <br/>
+**Expected**: All internship entries are listed out and displayed in the left UI panel.
+
+
+3. `list edit 1 n/Apples`
+   <br/>
+   <br/>
+   **Expected**: All internship entries are listed out and displayed in the left UI panel.
+
+
+
+### Add an Internship
+
+1. `add n/Visa r/Software Engineer s/New d/2023-03-01 c/Considering to apply t/Payment`
+  <br/>
+  <br/>
+   **Expected**: A new internship entry is successfully added. The new internship entry will have company name
+   `Visa`, role `Software Engineer`, status `New`, deadline of application `2023-03-01`, comment `Considering to apply`,
+   and tag `Payment`. The right UI panel displays the information for this new internship entry, and a success
+   message is displayed in the Results Display.
+
+
+2. `add n/Mastercard r/Software Engineer s/New d/2023-03-01`
+<br/>
+<br/>
+**Expected**: A new internship entry is successfully added. The new internship entry will have company name
+`Mastercard`, role `Software Engineer`, status `New` and deadline of application `2023-03-01`. The right
+UI panel displays the information for this new internship entry, where the comment is shown as `NA`. A success message
+is displayed in the Results Display.
+
+
+3. `add n/Visa s/New d/2023-03-01`
+  <br/>
+  <br/>
+  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  This is because the compulsory parameter for role is missing.
+
+
+4. `add n/Vis@ r/Software Engineer s/New d/2023-03-01`
+  <br/>
+  <br/>
+  **Expected**: No new internship is added. An error message  is displayed in the Results Display.
+  This is because the parameter for `COMPANY_NAME` must be alphanumeric.
+
+
+5. `add n/Visa r/Software Engineer s/Applying d/2023-03-01`
+  <br/>
+  <br/>
+  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  This is because `Applying` is not a valid value for the `STATUS` parameter.
+
+
+6. `add n/Visa r/Software Engineer s/Applied d/1st March 2023`
+  <br/>
+  <br/>
+  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  This is because the parameter for `DATE` must be in the format of `YYYY-MM-DD`.
+
+
+7. `add n/Visa r/Software Engineer s/Applied d/2023-02-32`
+  <br/>
+  <br/>
+  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  This is because `2023-02-32` is not a valid date (i.e. March does not have 32 days).
+
+
+8. `add n/Visa r/Software Engineer s/Applied d/2023-02-15 c/`
+  <br/>
+  <br/>
+  **Expected**: No new internship is added. An error message is displayed in the Results Display.
+  This is because the `COMMENT` parameter cannot be left blank.
+
+
+
+### Edit an Internship
+
+1. `edit 2 n/Amazon Technologies`
+   <br/>
+   <br/>
+   **Expected**: The company name of the second internship entry is updated to `Amazon Technologies`.
+   The right UI panel displays the updated details of the second internship entry.
+
+
+2. `edit 2 n/Amazon Technologies s/Applied`
+    <br/>
+    <br/>
+   **Expected**: The company name and status of the second internship entry are updated to
+   `Amazon Technologies` and `Applied` respectively. The right UI panel displays the updated details
+   of the second internship entry.
+
+
+3. `edit 2 t/front-end`
+   <br/>
+   <br/>
+   **Expected**: All previous tags for the second internship entry are removed, and a new tag
+   `front-end` is added. The right UI panel displays the updated details fo the second internship
+   entry.
+
+
+4. `edit 2 c/`
+   <br/>
+   <br/>
+   **Expected**: The comment of the second internship entry is updated to `NA`. The right UI panel
+   displays the updated details of the second internship entry.
+
+
+5. `edit 2 n/Amazon Technologies s/Applying`
+   <br/>
+   <br/>
+   **Expected**: The second internship entry is not edited. An error message is displayed in the right
+   UI panel. This is because while `Amazon Technologies` is a valid company name, `Applying` is an invalid
+   status.
+
+
+6. `edit`
+   <br/>
+   <br/>
+   **Expected**: An error message is displayed in the right UI panel. This is because a minimum of 1
+   optional parameter must be specified.
+
+
+7. `edit -2 n/Amazon Technologies`
+   <br/>
+   <br/>
+   **Expected**: An error message is displayed in the right UI panel. This is because the `INDEX`
+   parameter must be a positive integer greater than or equal to 1.
+
+
+8. `edit 12 n/Amazon Technologies`
+   <br/>
+   <br/>
+   **Expected**: An error message is displayed in the right UI panel. This is because there are only
+   7 internship entries in the sample data. Index 12 is out of range.
+   
+   
 ### Deleting a person
 
 1. Deleting a person while all persons are being shown
@@ -896,6 +1045,7 @@ testers are expected to do more *exploratory* testing.
 
 | Term                           | Definition                                                                                                                                                                                                                                  |
 |--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Alphanumeric                   | Any combination of letters and numbers                                                                                                                                                                                                      |
 | Command                        | An instruction for InternBuddy to perform an action.                                                                                                                                                                                        |
 | Command Line Interface (CLI)   | A CLI is the text-based interface that you can use to provide instructions to your computer. Examples of instructions include opening files and running programs.                                                                           |
 | Computing undergraduate        | A university undergraduate pursuing a Computing degree.                                                                                                                                                                                     |
@@ -903,17 +1053,17 @@ testers are expected to do more *exploratory* testing.
 | Mainstream OS                  | Includes Windows, macOS, Linux and Unix.                                                                                                                                                                                                    |
 | Parameter                      | A part of the command where you have to supply a value for the command to be valid.                                                                                                                                                         |
 | Prefix                         | A short form for the name of a parameter. Parameters used in commands have to be preceded by prefixes with`/`. For example, for the parameter `CompanyName`, the usage would be `n/CompanyName`, where `n` is the prefix for `CompanyName`. |
-| Tech Stack                     | A set of technologies that an individual or company uses to create or maintain a software system or product.                                                                                                                                |
+| Tech Stack                     | A set of technologies that an individual or company uses to create and/or maintain a software system or product.                                                                                                                            |
 
 
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
-* InternBuddy is written in **Java 11**, with usage of the [JavaFX](https://openjfx.io/),
-  [Jackson](https://github.com/FasterXML/jackson), [JUnit5](https://github.com/junit-team/junit5)
-  and [TestFX](https://github.com/TestFX/TestFX) libraries. It
-  is adapted from the [AddressBook Level 3](https://github.com/se-edu/addressbook-level3) project created by
+* InternBuddy is written in **Java 11**.
+* It is adapted from the [AddressBook Level 3](https://github.com/se-edu/addressbook-level3) project created by
   the [SE-EDU initiative](https://se-education.org).
-* InternBuddy also utilises code adapted from [AddressBook Level 4](https://github.com/se-edu/addressbook-level4)
-  and [Please Hire Us](https://github.com/AY2223S1-CS2103T-W17-4/tp) primarily for the purpose of GUI testing.
+* Libraries and frameworks used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson),
+  [JUnit5](https://github.com/junit-team/junit5) and [TestFX](https://github.com/TestFX/TestFX).
+* Other references: [AddressBook Level 4](https://github.com/se-edu/addressbook-level4)
+  and [Please Hire Us](https://github.com/AY2223S1-CS2103T-W17-4/tp).
