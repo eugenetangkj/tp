@@ -23,34 +23,112 @@ InternBuddy runs using Java 11, and is available on the Windows, macOS and Linux
 
 
 --------------------------------------------------------------------------------------------------------------------
+## About the User Guide
 
-## Quick start
+### Objectives of the User Guide
+This user guide aims to provide comprehensive instructions for users to learn how to use InternBuddy,
+providing details on the installation process and features provided by InternBuddy. It also contains information
+for advanced users to customise the usage of InternBuddy for a tailored user experience.
 
-1. Ensure you have Java `11` or above installed in your Computer.
+### Using the User Guide
+This uses guide uses a set of formatting standards and visuals to better communicate information.
+
+#### Information Box
+<div markdown="span" class="alert alert-primary">
+
+:information_source: **Info:** Provides useful information that supplements the main text
+</div>
+
+#### Tip Box
+<div markdown="span" class="alert alert-success">
+
+:bulb: **Tip:**  Suggestions on how to enhance your experience
+</div>
+
+#### Warning Box
+<div markdown="span" class="alert alert-danger">
+
+:warning: **Warning:**  Warns of a dangerous action that you should be aware of and to consider
+carefully before committing
+</div>
+
+#### Code Blocks
+Important code-related text and file paths are indicated using syntax highlighting.
+
+`command`, `PARAMETER`, `filepath.json`, `ClassName`
+
+
+#### Keyboard Actions
+Keyboard keys are indicated using rounded buttons.
+
+<button>Ctrl</button> <button>Alt</button> <button>Space</button> <button>Enter</button> <button>&uarr;</button>
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Quick Start
+
+1. Ensure you have Java `11` or above installed in your computer
+<div markdown="span" class="alert alert-primary">
+
+:information_source: **Info:** If you are unsure of whether you have Java 11 installed, or need help installing
+it, you can refer to <a href="#appendix">Appendix A</a>.
+
+</div>
+
 
 2. Download the latest `internbuddy.jar` from [here](https://github.com/AY2223S2-CS2103T-T14-3/tp/releases).
 
-3. Copy the file to the folder you want to use as the _home folder_ for InternBuddy.
+3. Copy the file `internbuddy.jar` to the folder you want to use as the _home folder_ for InternBuddy.
+<div markdown="span" class="alert alert-primary">
 
-4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar internbuddy.jar`
-   command to run the application.<br>
-   A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
+:information_source: **Info:** The home folder is the folder where you will navigate to in order to launch
+InternBuddy, and it is where your InternBuddy data file will be stored in.
+
+</div>
+
+4. Double-click on the file `internbuddy.jar` to launch InternBuddy. A GUI similar to the diagram below should
+   appear in a few seconds. Note how the app contains some sample data.<br/><br/>
    ![Ui](images/Ui.png)
 
-5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will
-   open the help window.<br>
-   Some example commands you can try:
+<br/>
 
-   * `list` : List All Internship Entries.
+5. You can interact with InternBuddy by typing into the box with the text `Enter command here...`, then pressing
+<button>Enter</button> to execute your command. For example, typing help and pressing <button>Enter</button> will open
+the help window.
 
-   * `add n/CompanyXYZ r/Software Engineer s/applied d/2023-03-03` : Adds an entry to track the internship
-      application for Company XYZ for the role of a Software Engineer.
 
-   * `delete 3` : Deletes the 3rd internship entry shown in the current list.
+6. Here are some other example commands you can try:
 
-   * `exit` : Exits the app.
+    - `list`: List all internship entries stored in InternBuddy
+    - `add n/Food Panda r/Web Developer s/Applied d/2023-04-01`: Adds a new internship entry into InternBuddy.
+    - `delete 3` : Deletes the 3rd internship entry of the current list displayed in InternBuddy.
+    - `exit` : Exits InternBuddy.
 
-6. Refer to the [Features](#features) below for details of each command.
+
+Do refer to [Features](#features) below for a comprehensive list of supported features and their associated details.
+
+--------------------------------------------------------------------------------------------------------------------
+
+## Exploring the Graphical User Interface
+
+![Graphical User Interface](images/gui-markup.png)
+
+<br/>
+
+| Part            | Usage                                                                                        |
+|-----------------|----------------------------------------------------------------------------------------------|
+| Input Box       | You can type in your commands here to interact with InternBuddy.                             |
+| Results Display | This is where the results of your command will be displayed.                                 |
+| List Panel      | Displays a list of internship entries.                                                       |
+| View Panel      | Displays either the welcome message or detailed information of a specified internship entry. |
+| Location Bar    | States where your InternBuddy data file is located on your computer.                         |
+
+<div markdown="span" class="alert alert-success">
+
+:bulb: **Tip:**  The GUI is resizeable. You can resize it according to your preferences.
+
+</div>
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -201,11 +279,11 @@ contains the data of your previous InternBuddy home folder.
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**List** | `list`
-**Add** | `add n/COMPANY_NAME r/ROLE s/STATUS d/DATE​` <br> e.g., `add n/Apple r/Software Engineer s/new`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [r/ROLE] [s/STATUS] [d/DATE]​`<br> e.g.,`edit 2 s/assessment r/SoftWare Developer`
-**Help** | `help`
-**Exit** | `exit`
+| Action     | Format, Examples                                                                                        |
+|------------|---------------------------------------------------------------------------------------------------------|
+| **List**   | `list`                                                                                                  |
+| **Add**    | `add n/COMPANY_NAME r/ROLE s/STATUS d/DATE​` <br> e.g., `add n/Apple r/Software Engineer s/new`         |
+| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                     |
+| **Edit**   | `edit INDEX [n/NAME] [r/ROLE] [s/STATUS] [d/DATE]​`<br> e.g.,`edit 2 s/assessment r/SoftWare Developer` |
+| **Help**   | `help`                                                                                                  |
+| **Exit**   | `exit`                                                                                                  |

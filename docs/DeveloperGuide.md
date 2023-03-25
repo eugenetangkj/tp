@@ -23,6 +23,8 @@ using Java 11, and is available on the Windows, macOS and Linux operating system
 
 --------------------------------------------------------------------------------------------------------------------
 ## About the Developer Guide
+
+### Objectives of the Developer Guide
 This developer guide aims to provide developers with insights into the implementation details
 of InternBuddy and to explain the design considerations behind the different features. It
 utilises Unified Modeling Language (UML) diagrams created using [PlantUML](https://plantuml.com/)
@@ -35,48 +37,64 @@ that we went through in the initial development phase for requirements gathering
 Hopefully, interested developers would be able to easily set up the InternBuddy project and
 extends its functionality through this developer guide.
 
---------------------------------------------------------------------------------------------------------------------
 
-## Using the Developer Guide
+### Using the Developer Guide
 This developer guide uses a set of formatting standards and syntax to better communicate
 information.
 
-### Information Box
+#### Information Box
 <div markdown="span" class="alert alert-primary">
 
 :information_source: **Info:** Provides useful information that supplements the main text
 </div>
 
-### Tip Box
+#### Tip Box
 <div markdown="span" class="alert alert-success">
 
 :bulb: **Tip:**  Suggestions on how to enhance your experience
 </div>
 
-### Warning Box
+#### Warning Box
 <div markdown="span" class="alert alert-danger">
 
 :warning: **Warning:**  Warns of a dangerous action that you should be aware of and to consider
 carefully before committing
 </div>
 
-### Code Blocks
+#### Code Blocks
 Important code-related text and file paths are indicated using syntax highlighting.
 
 `command`, `PARAMETER`, `filepath.json`, `ClassName`
 
 
-### Keyboard Actions
+#### Keyboard Actions
 Keyboard keys are indicated using rounded buttons.
 
 <button>Ctrl</button> <button>Alt</button> <button>Space</button> <button>Enter</button> <button>&uarr;</button>
 
 --------------------------------------------------------------------------------------------------------------------
 
+
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md) for instructions on how to
 set up the InternBuddy project in your personal computer.
+
+After setting up and launching InternBuddy, you would see a GUI. The following diagram illustrates the main parts
+of InternBuddy's GUI, which are referenced throughout this developer guide.
+
+
+![Graphical User Interface](images/gui-markup.png)
+
+| Part            | Usage                                                                                        |
+|-----------------|----------------------------------------------------------------------------------------------|
+| Input Box       | You can type in your commands here to interact with InternBuddy.                             |
+| Results Display | This is where the results of your command will be displayed.                                 |
+| List Panel      | Displays a list of internship entries.                                                       |
+| View Panel      | Displays either the welcome message or detailed information of a specified internship entry. |
+| Location Bar    | States where your InternBuddy data file is located on your computer.                         |
+
+
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -264,7 +282,7 @@ The following gives a more detailed explanation of the `add` operation.
 7. Else if there is no duplicate `Internship`, the `Internship` created will be added into
    the `Model` component.
 8. The currently selected `Internship` in the `Model` component will be updated to become
-   this new `Internship` such that the right UI panel displays the information for this new
+   this new `Internship` such that the View Panel displays the information for this new
    `Internship`.
 
 #### Design Considerations
@@ -283,13 +301,13 @@ The following gives a more detailed explanation of the `add` operation.
     * Cons: Less user-centric where users who do not want to include `Comment` and `Tag`
             are forced to input something for the `Add` command to work.
 
-###### Whether to update the right UI panel according to the `add` command
+###### Whether to update the View Panel according to the `add` command
 
 1. **Alternative 1 (chosen): Update the right panel whenever a new `Internship` is added**
     * Pros: Better visual indication that the `add` command has been successfully executed.
       if the user has  a lot of `Internship` entries, when a new `Internship` is added,
-      the new entry will be placed at the bottom of the left UI panel, which is not visible
-      if the user's scroll position is at the top of the left UI panel. Therefore, updating
+      the new entry will be placed at the bottom of the List Panel, which is not visible
+      if the user's scroll position is at the top of the List Panel. Therefore, updating
       the right panel enhances visual indication to the user that the `Internship` has been
       successfully added.
     * Cons: An additional line of code is required in the `execute` method of `AddCommand`
@@ -298,8 +316,8 @@ The following gives a more detailed explanation of the `add` operation.
 
 2. **Alternative 2: Do not update the right panel when a new `Internship` is added**
     * Pros: No additional code is required in the `execute` method of `AddCommand`.
-    * Cons: When the user has a lot of `Internship` entries, the added entry in the left
-      UI panel may not be visible since it is added to the bottom. Without scrolling, users
+    * Cons: When the user has a lot of `Internship` entries, the added entry in the List Panel
+      may not be visible since it is added to the bottom. Without scrolling, users
       have to rely on the Results Display box to determine if the `AddCommand` is successful.
 
 
@@ -364,7 +382,7 @@ The following gives a more detailed explanation of the `view` operation.
 7. Else if the `Index` is valid, the `Internship` which belongs to that `Index` will be
    retrieved by accessing the filtered `Internship` list.
 8. The currently selected `Internship` in the `Model` component will be updated to become
-   the `Internship` obtained from Step 7 such that the right UI panel displays the information
+   the `Internship` obtained from Step 7 such that the View Panel displays the information
    for this selected `Internship`.
 
 #### Design Considerations
@@ -664,7 +682,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Main Success Scenario**
 
 1.  User enters internship entry.
-2.  InternBuddy adds an internship entry, updates the right UI panel, and displays a success message.
+2.  InternBuddy adds an internship entry, updates the View Panel, and displays a success message.
 
     Use case ends.
 
@@ -687,7 +705,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Main Success Story**
 
 1.  User edits an internship entry.
-2.  InternBuddy updates that particular internship entry, updates the right UI panel, and displays a success message.
+2.  InternBuddy updates that particular internship entry, updates the View Panel, and displays a success message.
 
     Use case ends.
 
@@ -710,7 +728,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Main Success Scenario**
 
 1.  User views an internship entry.
-2.  InternBuddy updates the right UI panel with the details of the internship that is being viewed,
+2.  InternBuddy updates the View Panel with the details of the internship that is being viewed,
     and displays a success message.
 
     Use case ends.
@@ -788,7 +806,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 2a. InternBuddy detects that the internship whose details are currently displayed in the right UI
       panel has been deleted by this `delete` command.
-    * 2a1. InternBuddy resets the right UI panel to display the introductory message.
+    * 2a1. InternBuddy resets the View Panel to display the introductory message.
         
       Use case resumes from Step 2.
 
@@ -799,7 +817,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Main Success Scenario**
 
 1.  User requests to clear all internship entries stored in InternBuddy.
-2.  InternBuddy deletes all internship entries. It resets the right UI panel to display the introductory
+2.  InternBuddy deletes all internship entries. It resets the View Panel to display the introductory
     message and shows a success message. 
 
     Use case ends.
@@ -873,17 +891,17 @@ Testers are expected to do more *exploratory* testing. Also, each test case is i
 
 1. `list`
 
-   **Expected**: All internship entries are listed out and displayed in the left UI panel.
+   **Expected**: All internship entries are listed out and displayed in the List Panel.
 
 
 2. `list hello`
 
-   **Expected**: All internship entries are listed out and displayed in the left UI panel.
+   **Expected**: All internship entries are listed out and displayed in the List Panel.
 
 
 3. `list edit 1 n/Apples`
 
-   **Expected**: All internship entries are listed out and displayed in the left UI panel.
+   **Expected**: All internship entries are listed out and displayed in the List Panel.
 
 
 
@@ -893,7 +911,7 @@ Testers are expected to do more *exploratory* testing. Also, each test case is i
 
    **Expected**: A new internship entry is successfully added. The new internship entry will have company name
    `Visa`, role `Software Engineer`, status `New`, deadline of application `2023-03-01`, comment `Considering to apply`,
-   and tag `Payment`. The right UI panel displays the information for this new internship entry, and a success
+   and tag `Payment`. The View Panel displays the information for this new internship entry, and a success
    message is displayed in the Results Display.
 
 
@@ -949,26 +967,26 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
 1. `edit 2 n/Amazon Technologies`
 
    **Expected**: The company name of the second internship entry is updated to `Amazon Technologies`.
-   The right UI panel displays the updated details of the second internship entry.
+   The View Panel displays the updated details of the second internship entry.
 
 
 2. `edit 2 n/Amazon Technologies s/Applied`
 
    **Expected**: The company name and status of the second internship entry are updated to
-   `Amazon Technologies` and `Applied` respectively. The right UI panel displays the updated details
+   `Amazon Technologies` and `Applied` respectively. The View Panel displays the updated details
    of the second internship entry.
 
 
 3. `edit 2 t/front-end`
 
    **Expected**: All previous tags for the second internship entry are removed, and a new tag
-   `front-end` is added. The right UI panel displays the updated details fo the second internship
+   `front-end` is added. The View Panel displays the updated details fo the second internship
    entry.
 
 
 4. `edit 2 c/`
 
-   **Expected**: The comment of the second internship entry is updated to `NA`. The right UI panel
+   **Expected**: The comment of the second internship entry is updated to `NA`. The View Panel
    displays the updated details of the second internship entry.
 
 
@@ -977,7 +995,7 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
     2.  `edit 2 n/Google Technologies`
 
    **Expected**: The company name of the internship entry whose original company name is `Google` is updated
-   to become `Google Technologies`. The right UI panel displays the updated details for this internship entry.
+   to become `Google Technologies`. The View Panel displays the updated details for this internship entry.
 
 
 6. Unsuccessful editing through the filtered internship list
@@ -1018,7 +1036,7 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
 Assumptions: The sample data provided by InternBuddy is used, where there is a total of 7 internship entries.
 1. `view 2`
 
-   **Expected**: The right UI panel displays the details for the second internship entry.
+   **Expected**: The View Panel displays the details for the second internship entry.
 
 
 2. Successful viewing through the filtered internship list
@@ -1026,7 +1044,7 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
     1. `find n/Apple n/Google`
     2. `view 2`
 
-   **Expected**: The right UI panel displays the details for the second internship entry in the
+   **Expected**: The View Panel displays the details for the second internship entry in the
    filtered internship list. In this case, it displays the details for the entry whose company
    name is `Google`.
 
@@ -1069,13 +1087,13 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
 
 1. `find n/Amazon`
 
-   **Expected**: The left UI panel shows the internship entry whose company name exactly matches with
+   **Expected**: The List Panel shows the internship entry whose company name exactly matches with
    `Amazon`. A success message is displayed in the Results Display.
 
 
 2. `find n/Amazon n/Google`
    
-   **Expected**: The left UI panel shows the internship entries whose company name exactly matches with
+   **Expected**: The List Panel shows the internship entries whose company name exactly matches with
     `Amazon` or `Google`. A success message is displayed in the Results Display.
 
 
@@ -1083,9 +1101,9 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
     1. `find n/Apple n/Google`
     2. `find n/Amazon`
 
-   **Expected**: The left UI panel shows the internship entry whose company name exactly matches with
+   **Expected**: The List Panel shows the internship entry whose company name exactly matches with
    `Amazon`. This means that for the `find` command, the search is always done in the unfiltered list
-   even if the left UI panel was showing a filtered list.
+   even if the List Panel was showing a filtered list.
 
 
 4. `find`
@@ -1107,19 +1125,19 @@ Assumptions: The sample data provided by InternBuddy is used, where there is a t
 1. `upcoming`
 
    **Expected**: All internship entries with events or deadlines in the upcoming week are 
-   listed out and displayed in the left UI panel.
+   listed out and displayed in the List Panel.
 
 
 2. `upcoming hello`
 
    **Expected**: All internship entries with events or deadlines in the upcoming week are
-   listed out and displayed in the left UI panel.
+   listed out and displayed in the List Panel.
 
 
 3. `upcoming edit 1 n/Apples`
 
    **Expected**: All internship entries with events or deadlines in the upcoming week are
-   listed out and displayed in the left UI panel.
+   listed out and displayed in the List Panel.
 
    
 ### Delete Internships
@@ -1127,21 +1145,21 @@ Prerequisites: List all internships using the `list` command. Multiple internshi
 
 1. `delete 1`
 
-   **Expected**: The first internship entry in the left UI panel is deleted. If the right
+   **Expected**: The first internship entry in the List Panel is deleted. If the right
    UI panel was displaying the details of the deleted internship entry, it defaults to displaying
    the welcome message.
 
 
 2. `delete 1 2`
 
-    **Expected**: The first and second internship entry in the left UI panel are deleted. If the right
+    **Expected**: The first and second internship entry in the List Panel are deleted. If the right
     UI panel was displaying the details of either deleted internship entries, it defaults to displaying
     the welcome message.
 
 
 3. `delete s/New`
 
-   **Expected**: All internship entries with the status `New` are deleted. If the right UI panel was
+   **Expected**: All internship entries with the status `New` are deleted. If the View Panel was
    displaying the details of one of these deleted internship entries, it defaults to displaying the
    welcome message.
 
@@ -1158,17 +1176,17 @@ Prerequisites: List all internships using the `list` command. Multiple internshi
 
 1. `clear`
 
-   **Expected**: All internship entries are deleted. The right UI panel displays the welcome message.
+   **Expected**: All internship entries are deleted. The View Panel displays the welcome message.
 
 
 2. `clear hello`
 
-   **Expected**: All internship entries are deleted. The right UI panel displays the welcome message.
+   **Expected**: All internship entries are deleted. The View Panel displays the welcome message.
 
 
 3. `clear edit 1 n/Apples`
 
-   **Expected**: All internship entries are deleted. The right UI panel displays the welcome message.
+   **Expected**: All internship entries are deleted. The View Panel displays the welcome message.
 
 
 ### Get Help
@@ -1213,7 +1231,7 @@ Prerequisites: List all internships using the `list` command. Multiple internshi
    1. If you have an existing `internbuddy.json` file, delete the file.
    2. Double-click InternBuddy's jar file.
    
-   **Expected**: InternBuddy launches with the sample internship data shown in the left UI panel. There
+   **Expected**: InternBuddy launches with the sample internship data shown in the List Panel. There
    is a total of 7 internship entries.
 
 
@@ -1232,7 +1250,7 @@ Prerequisites: List all internships using the `list` command. Multiple internshi
    6. Launch InternBuddy.
 
     **Expected**: Your previous changes to the sample data are no longer present. InternBuddy launches
-   with the sample internship data shown in the left UI panel. There is a total of 7 internship entries.
+   with the sample internship data shown in the List Panel. There is a total of 7 internship entries.
 
 
 
