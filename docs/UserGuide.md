@@ -351,11 +351,75 @@ contains the data of your previous InternBuddy home folder.
 
 ## Command summary
 
-| Action     | Format, Examples                                                                                        |
-|------------|---------------------------------------------------------------------------------------------------------|
-| **List**   | `list`                                                                                                  |
-| **Add**    | `add n/COMPANY_NAME r/ROLE s/STATUS d/DATE​` <br> e.g., `add n/Apple r/Software Engineer s/new`         |
-| **Delete** | `delete INDEX`<br> e.g., `delete 3`                                                                     |
-| **Edit**   | `edit INDEX [n/NAME] [r/ROLE] [s/STATUS] [d/DATE]​`<br> e.g.,`edit 2 s/assessment r/SoftWare Developer` |
-| **Help**   | `help`                                                                                                  |
-| **Exit**   | `exit`                                                                                                  |
+| Action                        | Format, Examples                                                                                                                    |
+|-------------------------------|-------------------------------------------------------------------------------------------------------------------------------------|
+| List                          | `list`                                                                                                                              |
+| Add                           | `add n/COMPANY_NAME r/ROLE s/STATUS d/DATE [c/COMMENT] [t/TAG]...`  <br> e.g., `add n/Apple r/Software Engineer s/New d/2023-03-01` |
+| Edit                          | `edit INDEX [n/NAME] [r/ROLE] [s/STATUS] [d/DATE] [c/COMMENT] [t/TAG]...`<br> e.g.,`edit 2 s/Assessment r/Software Developer`       |
+| View                          | `view INDEX`<br> e.g., `view 1`                                                                                                     |
+| Find                          | `find [n/COMPANY_NAME]... [r/ROLE]... [s/STATUS]... [d/DATE]... [t/TAG]...`<br/>e.g., `find n/Apple n/Google`                       |
+| Get upcoming events/deadlines | `upcoming`                                                                                                                          |
+| Delete                        | `delete INDEX`<br> e.g., `delete 3`                                                                                                 |
+| Clear                         | `clear`                                                                                                                             |
+| Help                          | `help`                                                                                                                              |
+| Exit                          | `exit`                                                                                                                              |
+
+
+--------------------------------------------------------------------------------------------------------------------
+## Appendix A: Installing Java 11
+Follow the following steps to set up Java 11 in your computer.
+1. Open up a terminal on your computer.
+    - For Windows users, click on the `Windows` icon at the bottom left of your computer. Then, type in `terminal` in
+      the search bar and double-click the application called `Terminal`.
+    - For macOS users, click on the `Spotlight` search icon at the top right of your computer. Then, type in `terminal`
+      in the search bar and double-click the application called `Terminal`.
+    - For Linux users, press <Button>CTRL</Button> + <Button>ALT</Button> + <Button>T</Button> to launch the terminal.
+2. In the terminal, type in `java -version` and press <button>Enter</button>. The terminal will display the version of
+   Java that you have installed on your computer.
+3. If you do not have any versions of Java installed, or you have a version older than Java 11, download [Java 11](https://www.oracle.com/java/technologies/downloads/#java11) here.
+You may then return to Step 1 to check whether you have the correct version of Java installed.
+
+--------------------------------------------------------------------------------------------------------------------
+## Appendix B: Customising the Data File
+If you are an advanced user of InternBuddy, you can directly edit the contents of your data through the `internbuddy.json`
+file without using the GUI.
+
+<div markdown="span" class="alert alert-danger">
+
+:warning: **Warning:**  If you are new to InternBuddy or are not confident in reading JSON files, we would advise you against
+directly editing the `internbuddy.json` file. This is because if you accidentally make a mistake that leads to the JSON
+file not having correct format, InternBuddy would restart with the sample data file, wiping out any data that you had
+previously.
+
+</div>
+
+Follow the following steps to properly edit the `internbuddy.json` file:
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Glossary**
+
+
+| Term                           | Definition                                                                                                                                                                                                              |
+|--------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Alphanumeric                   | Any combination of letters and numbers                                                                                                                                                                                  |
+| Command                        | An instruction for InternBuddy to perform an action.                                                                                                                                                                    |
+| Command Line Interface (CLI)   | A CLI is the text-based interface that you can use to provide instructions to your computer. Examples of instructions include opening files and running programs.                                                       |
+| Graphical User Interface (GUI) | A GUI is the visual interface that you see when an application launches, allowing you to interact with it by clicking on its various buttons and components.                                                            |
+| Mainstream OS                  | Includes Windows, macOS, Linux and Unix.                                                                                                                                                                                |
+| Parameter                      | A part of the command where you have to supply a value for the command to be valid.                                                                                                                                     |
+| Prefix                         | A short form for the name of a parameter. It indicates which parameter does a value belongs to. For example, in `n/Apple`, the value `Apple` is supplied to the parameter `COMPANY_NAME` since the `n/` prefix is used. |
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Acknowledgements**
+
+* InternBuddy is written in **Java 11**.
+* It is adapted from the [AddressBook Level 3](https://github.com/se-edu/addressbook-level3) project created by
+  the [SE-EDU initiative](https://se-education.org).
+* Libraries and frameworks used: [JavaFX](https://openjfx.io/), [Jackson](https://github.com/FasterXML/jackson),
+  [JUnit5](https://github.com/junit-team/junit5) and [TestFX](https://github.com/TestFX/TestFX).
+* Other references: [AddressBook Level 4](https://github.com/se-edu/addressbook-level4)
+  and [Please Hire Us](https://github.com/AY2223S1-CS2103T-W17-4/tp).
+
