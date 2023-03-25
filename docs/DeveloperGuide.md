@@ -12,7 +12,7 @@ using Java 11, and is available on the Windows, macOS and Linux operating system
   <img width="300" height="175" src="images/internbuddy-computer.png">
 </p>
 
-
+## Table of Contents
 * Table of Contents
   {:toc}
 
@@ -37,7 +37,7 @@ information.
 ### Information Box
 <div markdown="span" class="alert alert-primary">
 
-:info: **Info:** Provides useful information that supplements the main text
+:information_source: **Info:** Provides useful information that supplements the main text
 </div>
 
 ### Tip Box
@@ -60,10 +60,9 @@ Important code-related text and file paths are indicated using syntax highlighti
 
 
 ### Keyboard Actions
-Keyboard keys are indicated using rounded boxes.
+Keyboard keys are indicated using rounded buttons.
 
-<kbd>Ctrl</kbd> <kbd>Alt</kbd> <kbd>Space</kbd> <kbd>Enter</kbd> <kbd>&uarr;</kbd>
-
+<button>Ctrl</button> <button>Alt</button> <button>Space</button> <button>Enter</button> <button>&uarr;</button>
 
 
 ## **Setting up, getting started**
@@ -567,7 +566,7 @@ _{more aspects and alternatives to be added}_
 
 --------------------------------------------------------------------------------------------------------------------
 
-## **Appendix: Requirements**
+## **Appendix A: Requirements**
 
 ### Product scope
 
@@ -611,89 +610,186 @@ capabilities for easy tracking and follow-ups while eliminating the need to hand
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                                                                     | I want to …​                                                     | So that I can…​                                                                                     |
-|----------|---------------------------------------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| `* * *`  | Computing undergraduate with many internship applications                                   | list out all the entries                                         | browse through my list of applications.                                                             |
-| `* * *`  | Computing undergraduate applying for many internships                                       | add a new entry                                                  | manage new applications using InternBuddy.                                                          |
-| `* * *`  | Computing undergraduate managing many concurrent internship applications                    | add a status to each entry                                       | track the status of each application.                                                               |
-| `* * *`  | Computing undergraduate who is planning to track internship applications in the long run    | delete entries                                                   | remove outdated or irrelevant entries from InternBuddy.                                             |
-| `* * *`  | Computing undergraduate who is planning to track internship applications in the long run    | store data                                                       | resume from where I left off in my previous run of InternBuddy.                                     |
-| `* * *`  | Computing undergraduate who is a new user of InternBuddy                                    | view the list of supported commands                              | refer to it when I am unsure about the usage of InternBuddy.                                        |
-| `* *`    | meticulous Computing undergraduate                                                          | be notified that InternBuddy is exiting                          | be rest assured that InternBuddy has successfully terminated when I exit it.                        |
-| `* *`    | careless Computing undergraduate                                                            | modify the details of an entry                                   | correct my typos without having to create a new entry from scratch.                                 |
-| `* *`    | careless Computing undergraduate                                                            | be prompted with a confirmation message before I delete an entry | avoid accidental deletes.                                                                           |
-| `* *`    | forgetful Computing undergraduate                                                           | rely on auto-saving of data                                      | avoid the problem of forgetting to save my entries when I make changes to them.                     |
-| `* *`    | Computing undergraduate applying for technical roles                                        | tag each entry with its associated tech stack                    | identify the technical requirements associated with each application.                               |
-| `* *`    | Computing undergraduate applying for technical roles                                        | filter internship entries by tags                                | narrow down the search to internship applications with the tech stack that I would like to work on. |
-| `* *`    | Computing undergraduate with many internship applications                                   | search an entry by name                                          | easily and swiftly locate the desired application entry.                                            |
-| `* *`    | Computing undergraduate who is not extremely proficient with the command line interface     | have intuitive and simple-to-pick-up commands                    | use InternBuddy without much technical difficulties.                                                |
-| `* * `   | detail-oriented Computing undergraduate                                                     | add custom remarks to each entry                                 | have the flexibility of documenting miscellaneous but relevant information.                         |
-| `*`      | Computing undergraduate who is slow in learning                                             | go through a step-by-step in-app tutorial                        | learn how to use InternBuddy in a guided and self-paced environment.                                |
-| `*`      | Computing undergraduate managing many concurrent internship applications                    | filter internship entries by date                                | identify the upcoming tasks or deadlines.                                                           |
-| `*`      | Computing undergraduate managing many concurrent internship applications                    | obtain reminders                                                 | avoid forgetting about upcoming tasks or deadlines.                                                 |
-| `*`      | analytical Computing undergraduate                                                          | have a summary overview of all the entries                       | analyse the composition of the entries, such as what percentage of applications were successful.    |
-| `*`      | Computing undergraduate who is planning to track internship applications in the long run    | archive old entries                                              | delete them from InternBuddy while maintaining a backup copy of the outdated data.                  |
-| `*`      | Computing undergraduate who is experienced in using InternBuddy                             | have shortcuts to existing commands                              | carry out tasks in InternBuddy even more efficiently than previously.                               |
+| Priority | As a …​                                                                                  | I want to …​                                                     | So that I can…​                                                                                     |
+|----------|------------------------------------------------------------------------------------------|------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| `* * *`  | Computing undergraduate with many internship applications                                | list out all the entries                                         | browse through my list of applications.                                                             |
+| `* * *`  | Computing undergraduate applying for many internships                                    | add a new entry                                                  | manage new applications using InternBuddy.                                                          |
+| `* * *`  | Computing undergraduate managing many concurrent internship applications                 | add a status to each entry                                       | track the status of each application.                                                               |
+| `* * *`  | Computing undergraduate who is planning to track internship applications in the long run | delete entries                                                   | remove outdated or irrelevant entries from InternBuddy.                                             |
+| `* * *`  | Computing undergraduate who is planning to track internship applications in the long run | store data                                                       | resume from where I left off in my previous run of InternBuddy.                                     |
+| `* * *`  | Computing undergraduate who is a new user of InternBuddy                                 | view the list of supported commands                              | refer to it when I am unsure about the usage of InternBuddy.                                        |
+| `* *`    | meticulous Computing undergraduate                                                       | be notified that InternBuddy is exiting                          | be rest assured that InternBuddy has successfully terminated when I exit it.                        |
+| `* *`    | careless Computing undergraduate                                                         | modify the details of an entry                                   | correct my typos without having to create a new entry from scratch.                                 |
+| `* *`    | careless Computing undergraduate                                                         | be prompted with a confirmation message before I delete an entry | avoid accidental deletes.                                                                           |
+| `* *`    | forgetful Computing undergraduate                                                        | rely on auto-saving of data                                      | avoid the problem of forgetting to save my entries when I make changes to them.                     |
+| `* *`    | Computing undergraduate applying for technical roles                                     | tag each entry with its associated tech stack                    | identify the technical requirements associated with each application.                               |
+| `* *`    | Computing undergraduate applying for technical roles                                     | filter internship entries by tags                                | narrow down the search to internship applications with the tech stack that I would like to work on. |
+| `*`      | Computing undergraduate managing many concurrent internship applications                 | filter internship entries by date                                | identify the upcoming tasks or deadlines.                                                           |
+| `* *`    | Computing undergraduate with many internship applications                                | search an entry by name                                          | easily and swiftly locate the desired application entry.                                            |
+| `* *`    | Computing undergraduate who is not extremely proficient with the command line interface  | have intuitive and simple-to-pick-up commands                    | use InternBuddy without much technical difficulties.                                                |
+| `* *`    | detail-oriented Computing undergraduate                                                  | add custom remarks to each entry                                 | have the flexibility of documenting miscellaneous but relevant information.                         |
+| `* *`    | Computing undergraduate managing many concurrent internship applications                 | obtain reminders                                                 | avoid forgetting about upcoming tasks or deadlines.                                                 |
+| `* *`    | Computing undergraduate using multiple devices                                           | export my internship data into a file                            | view the same data when I am not using the device with InternBuddy installed.                       |
+| `*`      | Computing undergraduate who is slow in learning                                          | go through a step-by-step in-app tutorial                        | learn how to use InternBuddy in a guided and self-paced environment.                                |
+| `*`      | analytical Computing undergraduate                                                       | have a summary overview of all the entries                       | analyse the composition of the entries, such as what percentage of applications were successful.    |
+| `*`      | Computing undergraduate who is planning to track internship applications in the long run | archive old entries                                              | delete them from InternBuddy while maintaining a backup copy of the outdated data.                  |
+| `*`      | Computing undergraduate who is experienced in using InternBuddy                          | have shortcuts to existing commands                              | carry out tasks in InternBuddy even more efficiently than previously.                               |
 
 ### Use cases
 
 (For all use cases below, the **System** is `InternBuddy` and the **Actor** is the `user`, unless specified otherwise)
 
+**Use case: List all internship applications.**
+
+**MSS**
+
+1.  User requests for the list of all internship applications in InternBuddy.
+2.  InternBuddy displays a list of all the internship entries.
+
+    Use case ends.
+
+
 **Use case: Add an internship entry**
 
 **MSS**
 
-1.  User enters internship entry
-2.  InternBuddy adds an internship entry and displays success message
+1.  User enters internship entry.
+2.  InternBuddy adds an internship entry, updates the right UI panel, and displays a success message.
 
     Use case ends.
 
 **Extensions**
 
-* 1a.  InternBuddy detects one or more fields are missing.
-    * 1a1. InternBuddy requests for internship entry with correct format.
-    * 1a2. User enters corrected internship entry.
-    * Steps 1a1-1a2 are repeated until the internship entry entered is of the correct format.
+* 1a.  InternBuddy detects that one or more compulsory parameters are missing.
+    * 1a1. InternBuddy prompts the user for an `add` command of the correct format.
+  
+      Use case resumes from Step 1.
 
-      Use case ends.
+* 1b.  InternBuddy detects one or more parameters are invalid.
+    * 1b1. InternBuddy prompts the user for an `add` command of the correct format.
 
-* 1b.  InternBuddy detects one or more fields have invalid parameters.
-    * 1b1. InternBuddy requests for internship entry with correct format.
-    * 1b2. User enters corrected internship entry.
-    * Steps 1b1-1b2 are repeated until the internship entry entered is of the correct format.
+      Use case resumes from Step 1.
 
-      Use case ends.
 
 **Use Case: Edit an internship entry**
 
 **MSS**
 
-1.  User edits an internship entry
-2.  InternBuddy updates that particular internship entry and displays success message
+1.  User edits an internship entry.
+2.  InternBuddy updates that particular internship entry, updates the right UI panel, and displays a success message.
 
     Use case ends.
 
 **Extensions**
 
-* 1a. InternBuddy detects missing field.
-    * 1a1. InternBuddy prompts user for edit command of correct format.
+* 1a. InternBuddy detects that one or more compulsory parameters are missing.
+    * 1a1. InternBuddy prompts the user for an `edit` command of the correct format.
 
-      Use case resumes from Step (1).
+      Use case resumes from Step 1.
 
-* 1b. InternBuddy detects one or more fields has invalid parameters.
-    * 1b1. InternBuddy prompts user for edit command of correct format.
+* 1b. InternBuddy detects one or more parameters are invalid.
+    * 1b1. InternBuddy prompts the user for an `edit` command of the correct format.
+      
+      Use case resumes from Step 1.
+  
 
-      Use case resumes from Step (1).
-
-**Use case: Display list of all internship applications on InternBuddy.**
+**Use Case: View an internship entry**
 
 **MSS**
 
-1.  User requests for the list
-2.  InternBuddy displays a list of all the internship entries
+1.  User views an internship entry.
+2.  InternBuddy updates the right UI panel with the details of the internship that is being viewed,
+    and displays a success message.
 
     Use case ends.
 
+**Extensions**
+
+* 1a. InternBuddy detects that the required internship index is missing.
+    * 1a1. InternBuddy prompts the user for an `view` command of the correct format.
+
+      Use case resumes from Step 1.
+
+* 1b. InternBuddy detects that the internship index entered is invalid.
+    * 1b1. InternBuddy prompts the user for a `view` command of the correct format.
+
+      Use case resumes from Step 1.
+
+
+**Use Case: Find internship entries**
+
+**MSS**
+
+1.  User finds internship entries based on the parameters given.
+2.  InternBuddy lists the internships that match the given parameters and displays a success message indicating
+    how many internships were found.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. InternBuddy detects that no parameter is given.
+    * 1a1. InternBuddy prompts the user for a `find` command of the correct format.
+
+      Use case resumes from Step 1.
+
+* 1b. InternBuddy detects that one or more parameters given are invalid.
+    * 1b1. InternBuddy prompts the user for a `find` command of the correct format.
+
+      Use case resumes from Step 1.
+
+**Use Case: Get internship entries with upcoming events or deadlines**
+
+**MSS**
+
+1.  User requests for internship entries with upcoming events or deadlines.
+2.  InternBuddy displays a list of internship entries with events or deadlines within the week.
+
+    Use case ends.
+
+
+**Use Case: Delete internship entries**
+
+**MSS**
+
+1.  User deletes internship entries based on the parameters given.
+2.  InternBuddy displays a success message that indicates how many internships were found.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. InternBuddy detects that no parameter is given.
+    * 1a1. InternBuddy prompts the user for a `delete` command of the correct format.
+
+      Use case resumes from Step 1.
+
+* 1b. InternBuddy detects that one or more parameters given are invalid.
+    * 1b1. InternBuddy prompts the user for a `delete` command of the correct format.
+
+      Use case resumes from Step 1.
+
+
+
+
+**Extensions**
+
+* 1a. InternBuddy detects that no parameter is given.
+    * 1a1. InternBuddy prompts the user for a `find` command of the correct format.
+
+      Use case resumes from Step 1.
+
+* 1b. InternBuddy detects that one or more parameters given are invalid.
+    * 1b1. InternBuddy prompts the user for a `find` command of the correct format.
+
+      Use case resumes from Step 1.
+    
+
+
+
+
+
+    
 **Use case: Exit InternBuddy**
 
 **MSS**
