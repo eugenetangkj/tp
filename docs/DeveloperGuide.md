@@ -16,7 +16,7 @@ using Java 11, and is available on the Windows, macOS and Linux operating system
 * Table of Contents
   {:toc}
 
-
+--------------------------------------------------------------------------------------------------------------------
 ## About the Developer Guide
 This developer guide aims to provide developers with insights into the implementation details
 of InternBuddy and to explain the design considerations behind the different features. It
@@ -29,6 +29,8 @@ that we went through in the initial development phase for requirements gathering
 
 Hopefully, interested developers would be able to easily set up the InternBuddy project and
 extends its functionality through this developer guide.
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## Using the Developer Guide
 This developer guide uses a set of formatting standards and syntax to better communicate
@@ -64,12 +66,14 @@ Keyboard keys are indicated using rounded buttons.
 
 <button>Ctrl</button> <button>Alt</button> <button>Space</button> <button>Enter</button> <button>&uarr;</button>
 
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Setting up, getting started**
 
 Refer to the guide [_Setting up and getting started_](SettingUp.md) for instructions on how to
 set up the InternBuddy project in your personal computer.
 
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Design**
 
@@ -96,7 +100,7 @@ Given below is a quick overview of main components and how they interact with ea
 
 The rest of the App consists of four components.
 
-* [**`UI`**](#ui-component): The UI of the App.
+* [**`UI`**](#ui-component): The UI (User Interface) of the App.
 * [**`Logic`**](#logic-component): The command executor.
 * [**`Model`**](#model-component): Holds the data of the App in memory.
 * [**`Storage`**](#storage-component): Reads data from, and writes data to, the hard disk.
@@ -641,17 +645,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case: List all internship applications.**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User requests for the list of all internship applications in InternBuddy.
 2.  InternBuddy displays a list of all the internship entries.
 
     Use case ends.
 
+<br/>
 
 **Use case: Add an internship entry**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User enters internship entry.
 2.  InternBuddy adds an internship entry, updates the right UI panel, and displays a success message.
@@ -670,10 +675,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from Step 1.
 
+<br/>
 
 **Use Case: Edit an internship entry**
 
-**MSS**
+**Main Success Story**
 
 1.  User edits an internship entry.
 2.  InternBuddy updates that particular internship entry, updates the right UI panel, and displays a success message.
@@ -691,11 +697,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 1b1. InternBuddy prompts the user for an `edit` command of the correct format.
       
       Use case resumes from Step 1.
-  
+
+<br/>
 
 **Use Case: View an internship entry**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User views an internship entry.
 2.  InternBuddy updates the right UI panel with the details of the internship that is being viewed,
@@ -715,10 +722,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes from Step 1.
 
+<br/>
 
 **Use Case: Find internship entries**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User finds internship entries based on the parameters given.
 2.  InternBuddy lists the internships that match the given parameters and displays a success message indicating
@@ -739,19 +747,22 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case resumes from Step 1.
 
 
+<br/>
+
 **Use Case: Get internship entries with upcoming events or deadlines**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User requests for internship entries with upcoming events or deadlines.
 2.  InternBuddy displays a list of internship entries with events or deadlines within the week.
 
     Use case ends.
 
+<br/>
 
 **Use Case: Delete internship entries**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User deletes internship entries based on the parameters given.
 2.  InternBuddy displays a success message that indicates how many internships were deleted.
@@ -776,10 +787,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
         
       Use case resumes from Step 2.
 
+<br/>
 
 **Use Case: Clear all internship entries**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User requests to clear all internship entries stored in InternBuddy.
 2.  InternBuddy deletes all internship entries. It resets the right UI panel to display the introductory
@@ -787,10 +799,11 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+<br/>
 
 **Use Case: Get Help**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User requests for help in using InternBuddy.
 2.  InternBuddy opens up a new window that displays the list of commands supported by InternBuddy and provides
@@ -798,15 +811,16 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
     Use case ends.
 
+<br/>
+
 **Use case: Exit InternBuddy**
 
-**MSS**
+**Main Success Scenario**
 
 1.  User requests to exit InternBuddy.
 2.  InternBuddy closes.
 
     Use case ends.
-
 
 
 ### Non-Functional Requirements
@@ -819,11 +833,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 6. InternBuddy is not required to handle concurrent users.
 7. InternBuddy is not required to make data available online.
 
-### Glossary
 
-* **Mainstream OS**: Windows, Linux, Unix, OS-X
-* **Computing undergraduate**: Refers to a university undergraduate pursuing a Computing degree.
-* **Tech stack**: Refers to a set of technologies that a company uses to create or maintain a software system or product.
 --------------------------------------------------------------------------------------------------------------------
 
 ## **Appendix: Instructions for manual testing**
@@ -878,6 +888,25 @@ testers are expected to do more *exploratory* testing.
 1. _{ more test cases …​ }_
 
 
+
+--------------------------------------------------------------------------------------------------------------------
+
+## **Glossary**
+
+
+| Term                           | Definition                                                                                                                                                                                                                                  |
+|--------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Command                        | An instruction for InternBuddy to perform an action.                                                                                                                                                                                        |
+| Command Line Interface (CLI)   | A CLI is the text-based interface that you can use to provide instructions to your computer. Examples of instructions include opening files and running programs.                                                                           |
+| Computing undergraduate        | A university undergraduate pursuing a Computing degree.                                                                                                                                                                                     |
+| Graphical User Interface (GUI) | A GUI is the visual interface that you see when an application launches, allowing you to interact with it by clicking on its various buttons and components.                                                                                |
+| Mainstream OS                  | Includes Windows, macOS, Linux and Unix.                                                                                                                                                                                                    |
+| Parameter                      | A part of the command where you have to supply a value for the command to be valid.                                                                                                                                                         |
+| Prefix                         | A short form for the name of a parameter. Parameters used in commands have to be preceded by prefixes with`/`. For example, for the parameter `CompanyName`, the usage would be `n/CompanyName`, where `n` is the prefix for `CompanyName`. |
+| Tech Stack                     | A set of technologies that an individual or company uses to create or maintain a software system or product.                                                                                                                                |
+
+
+--------------------------------------------------------------------------------------------------------------------
 
 ## **Acknowledgements**
 
