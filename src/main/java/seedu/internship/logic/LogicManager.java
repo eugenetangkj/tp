@@ -82,6 +82,10 @@ public class LogicManager implements Logic {
     @Override
     public Internship getSelectedInternship() {
         return model.getSelectedInternship();
+    }
 
+    @Override
+    public Model getModel() {
+        return this.model;
     }
 }

@@ -26,6 +26,7 @@ public class UpcomingCommand extends Command {
     public CommandResult execute(Model model) throws CommandException {
         requireNonNull(model);
         model.updateFilteredInternshipList(PREDICATE_SHOW_UPCOMING_INTERNSHIPS);
+        System.out.println(model);
         return new CommandResult(MESSAGE_SUCCESS);
     }
 }
