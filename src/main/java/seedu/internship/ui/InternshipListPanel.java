@@ -30,7 +30,8 @@ public class InternshipListPanel extends UiPart<Region> {
     /**
      * Creates a {@code InternshipListPanel} with the given {@code ObservableList}.
      */
-    public InternshipListPanel(ObservableList<Internship> internshipList, Model selectedModel, MainWindow selectedMainWindow) {
+    public InternshipListPanel(ObservableList<Internship> internshipList, Model selectedModel,
+                               MainWindow selectedMainWindow) {
         super(FXML);
         internshipListView.setItems(internshipList);
         internshipListView.setCellFactory(listView -> new InternshipListViewCell());
@@ -39,9 +40,11 @@ public class InternshipListPanel extends UiPart<Region> {
         internshipListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Internship>() {
             //@@author eugenetangkj-reused
             //Reused and adapted from
-            // https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-listview-in-javafx-2
+            // https://stackoverflow.com/questions/12459086/how-to-perform-an-action-by-selecting-an-item-from-
+            // listview-in-javafx-2
             @Override
-            public void changed(ObservableValue<? extends Internship> observable, Internship oldValue, Internship newValue) {
+            public void changed(ObservableValue<? extends Internship> observable, Internship oldValue,
+                                Internship newValue) {
                 model.updateSelectedInternship(newValue);
                 mainWindow.updateRightPanel();
             }
